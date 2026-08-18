@@ -7,7 +7,7 @@
   <meta name="description" content="Условия оказания услуг студии звукозаписи DOPE MUSIC: бронь, оплата, перенос сессий, купоны, права на записи.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/main.css">
-  <script>document.documentElement.classList.add("js")</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("dm-shift")==="night")document.documentElement.setAttribute("data-shift","night")}catch(e){}</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -39,6 +39,7 @@
       <a href="services.html">Цены</a>
       <a href="contacts.html">Контакты</a>
     </nav>
+    <button class="shift-toggle" type="button" aria-pressed="false" aria-label="Ночная смена: переключить тему" title="Ночная смена"><span aria-hidden="true">Д</span><span class="shift-toggle__track" aria-hidden="true"><span class="shift-toggle__knob"></span></span><span aria-hidden="true">Н</span></button>
     <a class="nav-cta" href="booking.html">Бронь ✱ 24/7</a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">
       <span></span><span></span><span></span>

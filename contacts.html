@@ -7,7 +7,7 @@
   <meta name="description" content="Студия DOPE MUSIC: ул. Петропавловская, 40, Пермь. Работаем круглосуточно. Телефон 8 (919) 709-04-09, Telegram @dopemusic_perm, VK dopemusicrecords.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/main.css">
-  <script>document.documentElement.classList.add("js")</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("dm-shift")==="night")document.documentElement.setAttribute("data-shift","night")}catch(e){}</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -39,6 +39,7 @@
       <a href="services.html">Цены</a>
       <a href="contacts.html" aria-current="page">Контакты</a>
     </nav>
+    <button class="shift-toggle" type="button" aria-pressed="false" aria-label="Ночная смена: переключить тему" title="Ночная смена"><span aria-hidden="true">Д</span><span class="shift-toggle__track" aria-hidden="true"><span class="shift-toggle__knob"></span></span><span aria-hidden="true">Н</span></button>
     <a class="nav-cta" href="booking.html">Бронь ✱ 24/7</a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">
       <span></span><span></span><span></span>
@@ -150,7 +151,7 @@
                 <rect x="444" y="408" width="56" height="42"/><rect x="524" y="420" width="60" height="40"/>
               </g>
               <!-- дом 40 -->
-              <rect x="320" y="212" width="66" height="52" fill="#161513"/>
+              <rect x="320" y="212" width="66" height="52" fill="var(--ink)"/>
               <!-- улицы -->
               <g stroke="#8F8C85" stroke-width="1" stroke-dasharray="4 4">
                 <line x1="0" y1="170" x2="640" y2="170"/>
@@ -158,13 +159,13 @@
                 <line x1="200" y1="0" x2="200" y2="520"/>
                 <line x1="410" y1="0" x2="410" y2="520"/>
               </g>
-              <text x="30" y="345" font-family="Martian Mono, monospace" font-size="14" font-weight="700" letter-spacing="4" fill="#161513">УЛ. ПЕТРОПАВЛОВСКАЯ</text>
+              <text x="30" y="345" font-family="Martian Mono, monospace" font-size="14" font-weight="700" letter-spacing="4" fill="var(--ink)">УЛ. ПЕТРОПАВЛОВСКАЯ</text>
               <!-- печать-метка -->
               <g transform="translate(353 238)">
-                <circle r="46" fill="#F5F4F1" stroke="#A33A2A" stroke-width="2"/>
-                <circle r="38" fill="none" stroke="#A33A2A" stroke-width="1" stroke-dasharray="3 3"/>
-                <text y="-6" text-anchor="middle" font-family="Mulish, sans-serif" font-size="20" font-weight="1000" fill="#A33A2A">DM</text>
-                <text y="16" text-anchor="middle" font-family="Martian Mono, monospace" font-size="12" font-weight="700" fill="#A33A2A">✱ 40 ✱</text>
+                <circle r="46" fill="#F5F4F1" stroke="var(--stamp)" stroke-width="2"/>
+                <circle r="38" fill="none" stroke="var(--stamp)" stroke-width="1" stroke-dasharray="3 3"/>
+                <text y="-6" text-anchor="middle" font-family="Mulish, sans-serif" font-size="20" font-weight="1000" fill="var(--stamp)">DM</text>
+                <text y="16" text-anchor="middle" font-family="Martian Mono, monospace" font-size="12" font-weight="700" fill="var(--stamp)">✱ 40 ✱</text>
               </g>
             </g>
           </svg>

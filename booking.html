@@ -7,7 +7,7 @@
   <meta name="description" content="Забронируйте сессию в студии DOPE MUSIC в Перми: выбор даты и часа онлайн, расчёт стоимости, купон DOPE2500. Заявка уходит в Telegram студии.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/main.css">
-  <script>document.documentElement.classList.add("js")</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("dm-shift")==="night")document.documentElement.setAttribute("data-shift","night")}catch(e){}</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -39,6 +39,7 @@
       <a href="services.html">Цены</a>
       <a href="contacts.html">Контакты</a>
     </nav>
+    <button class="shift-toggle" type="button" aria-pressed="false" aria-label="Ночная смена: переключить тему" title="Ночная смена"><span aria-hidden="true">Д</span><span class="shift-toggle__track" aria-hidden="true"><span class="shift-toggle__knob"></span></span><span aria-hidden="true">Н</span></button>
     <a class="nav-cta" href="booking.html" aria-current="page">Бронь ✱ 24/7</a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">
       <span></span><span></span><span></span>
@@ -193,6 +194,13 @@
             <div style="display:flex; gap:12px; flex-wrap:wrap">
               <a class="btn" href="https://t.me/DOPEMUSIC_PERM" rel="noopener">Открыть чат студии</a>
               <a class="btn btn--ghost" href="tel:+79197090409">Позвонить</a>
+            </div>
+            <div id="bkTicketWrap" hidden style="margin-top:26px; border-top:1px dashed var(--line); padding-top:20px">
+              <p class="mono mono-b" style="margin-bottom:12px">Печатный талон ✱ сохраните и покажите на входе</p>
+              <img id="bkTicketImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Печатный талон брони со штрих-кодом" style="width:100%; max-width:340px; border:1px solid var(--line)">
+              <div style="margin-top:14px">
+                <a class="btn btn--ghost" id="bkTicketSave" download="dope-music-talon.png" href="#">Сохранить талон PNG</a>
+              </div>
             </div>
           </div>
         </div>

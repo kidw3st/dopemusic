@@ -98,6 +98,20 @@
   --gutter: clamp(16px, 4vw, 44px);
 }
 
+/* ночная смена: та же печать, но краска и бумага меняются местами */
+html[data-shift="night"] {
+  --paper: #1B1A18;
+  --sheet: #242320;
+  --sheet-dim: #2B2A27;
+  --ink: #E5E3DD;
+  --ink-2: #A5A29B;
+  --line: #3C3A36;
+  --night: #111009;
+  --night-2: #201E1B;
+  --paper-on-night: #E5E3DD;
+  --stamp: #C9553F;
+}
+
 /* ---------- База ---------- */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -243,9 +257,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: transparent;
   white-space: nowrap;
 }
-.pill--studio { background: var(--studio); border-color: var(--ink); }
-.pill--label  { background: #9DBEEA; border-color: var(--ink); }
-.pill--prod   { background: #EBBE6A; border-color: var(--ink); }
+/* цветные пилюли печатаются одинаково в обеих сменах: тёмная краска по плашке */
+.pill--studio { background: var(--studio); border-color: #161513; color: #161513; }
+.pill--label  { background: #9DBEEA; border-color: #161513; color: #161513; }
+.pill--prod   { background: #EBBE6A; border-color: #161513; color: #161513; }
 .pill--ink    { background: var(--ink); color: var(--paper); }
 
 /* ---------- Каркас страницы ---------- */
@@ -355,6 +370,38 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   transition: background-color 140ms ease, color 140ms ease;
 }
 .nav-cta:hover { background: transparent; color: var(--ink); }
+
+/* тумблер ночной смены: мини-фейдер в шапке */
+.shift-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  padding: 6px 2px;
+}
+.shift-toggle__track {
+  width: 42px;
+  height: 16px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  position: relative;
+  display: inline-block;
+}
+.shift-toggle__knob {
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+  width: 7px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: left 200ms var(--ease-out);
+}
+html[data-shift="night"] .shift-toggle__knob { left: calc(100% - 10px); }
 
 /* мобильное меню */
 .nav-toggle {
@@ -472,6 +519,26 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 @keyframes stamp-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+/* печать-пластинка: кликом играет, драгом скретчится */
+.vinyl-btn {
+  display: block;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.vinyl-btn:active { transform: none; }
+.vinyl-spin { transform-box: fill-box; transform-origin: center; }
+.vinyl-btn.playing .vinyl-spin { animation: vinyl-rot 1.8s linear infinite; }
+.vinyl-btn.playing .badge-stamp__ring { animation-duration: 9s; }
+@keyframes vinyl-rot {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.vinyl-hint { text-align: center; margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) {
+  .vinyl-btn.playing .vinyl-spin { animation: none; }
 }
 
 /* ---------- Reveal при скролле ---------- */

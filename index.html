@@ -7,7 +7,7 @@
   <meta name="description" content="Первая автоматизированная студия звукозаписи Перми. Запись 24/7, сведение, мастеринг, дистрибуция и обложки. Петропавловская, 40. Бронь онлайн.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/main.css">
-  <script>document.documentElement.classList.add("js")</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("dm-shift")==="night")document.documentElement.setAttribute("data-shift","night")}catch(e){}</script>
 </head>
 <body>
 <!--
@@ -48,6 +48,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <a href="services.html">Цены</a>
       <a href="contacts.html">Контакты</a>
     </nav>
+    <button class="shift-toggle" type="button" aria-pressed="false" aria-label="Ночная смена: переключить тему" title="Ночная смена"><span aria-hidden="true">Д</span><span class="shift-toggle__track" aria-hidden="true"><span class="shift-toggle__knob"></span></span><span aria-hidden="true">Н</span></button>
     <a class="nav-cta" href="booking.html">Бронь ✱ 24/7</a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">
       <span></span><span></span><span></span>
@@ -84,7 +85,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           </div>
         </div>
         <div class="rv" style="justify-self:center">
-          <!-- круглая печать студии -->
+          <!-- круглая печать студии: кликом играет, драгом скретчится -->
+          <button class="vinyl-btn" type="button" id="vinylBtn" aria-pressed="false" aria-label="Печать-пластинка: включить виниловый треск; тяните по кругу для скретча">
           <svg class="badge-stamp" viewBox="0 0 360 360" width="360" height="360" style="max-width:min(76vw,380px); height:auto" role="img" aria-label="Печать: Dope Music, studio and label, high quality sound only, making dope music since 2022 and further">
             <circle cx="180" cy="180" r="176" fill="var(--sheet)" stroke="var(--line)"/>
             <g class="badge-stamp__ring">
@@ -94,7 +96,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
               </text>
             </g>
             <g transform="translate(116 52) scale(1.6)">
-              <g transform="rotate(-14 34 42)">
+              <g class="vinyl-spin" transform="rotate(-14 34 42)">
                 <circle cx="34" cy="42" r="32" fill="var(--ink)"/>
                 <g fill="var(--sheet)">
                   <g transform="rotate(-52 34 42)"><rect x="30.9" y="7.4" width="6.2" height="14" rx="3.1"/></g>
@@ -111,6 +113,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
             <text x="180" y="253" text-anchor="middle" font-family="Mulish, sans-serif" font-size="46" font-weight="1000" letter-spacing="-1" fill="var(--ink)">DOPE</text>
             <text x="180" y="295" text-anchor="middle" font-family="Mulish, sans-serif" font-size="46" font-weight="1000" letter-spacing="-1" fill="var(--ink)">MUSIC</text>
           </svg>
+          </button>
+          <p class="mono mono-sm muted vinyl-hint" aria-hidden="true">✱ нажми: играет ✱ потяни: скретч</p>
         </div>
       </div>
       <div class="running-head" style="margin:clamp(30px,5vw,54px) 0 6px">
@@ -299,5 +303,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script src="assets/js/vinyl.js"></script>
 </body>
 </html>
