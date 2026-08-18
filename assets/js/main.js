@@ -57,20 +57,6 @@
     revealed.forEach(function (el) { el.classList.add('on'); });
   }
 
-  /* Тумблер ночной смены: атрибут на html, выбор в localStorage */
-  var shift = document.querySelector('.shift-toggle');
-  if (shift) {
-    var root = document.documentElement;
-    shift.setAttribute('aria-pressed', String(root.getAttribute('data-shift') === 'night'));
-    shift.addEventListener('click', function () {
-      var night = root.getAttribute('data-shift') === 'night';
-      if (night) root.removeAttribute('data-shift');
-      else root.setAttribute('data-shift', 'night');
-      shift.setAttribute('aria-pressed', String(!night));
-      try { localStorage.setItem('dm-shift', night ? 'day' : 'night'); } catch (e) { }
-    });
-  }
-
   /* Текущий год в подвале */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());

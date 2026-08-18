@@ -98,20 +98,6 @@
   --gutter: clamp(16px, 4vw, 44px);
 }
 
-/* ночная смена: та же печать, но краска и бумага меняются местами */
-html[data-shift="night"] {
-  --paper: #1B1A18;
-  --sheet: #242320;
-  --sheet-dim: #2B2A27;
-  --ink: #E5E3DD;
-  --ink-2: #A5A29B;
-  --line: #3C3A36;
-  --night: #111009;
-  --night-2: #201E1B;
-  --paper-on-night: #E5E3DD;
-  --stamp: #C9553F;
-}
-
 /* ---------- База ---------- */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -370,38 +356,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   transition: background-color 140ms ease, color 140ms ease;
 }
 .nav-cta:hover { background: transparent; color: var(--ink); }
-
-/* тумблер ночной смены: мини-фейдер в шапке */
-.shift-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--ink-2);
-  padding: 6px 2px;
-}
-.shift-toggle__track {
-  width: 42px;
-  height: 16px;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  position: relative;
-  display: inline-block;
-}
-.shift-toggle__knob {
-  position: absolute;
-  top: 2.5px;
-  left: 3px;
-  width: 7px;
-  height: 8px;
-  border-radius: 2px;
-  background: var(--ink);
-  transition: left 200ms var(--ease-out);
-}
-html[data-shift="night"] .shift-toggle__knob { left: calc(100% - 10px); }
 
 /* мобильное меню */
 .nav-toggle {
@@ -767,6 +721,73 @@ html.js .rv.on { opacity: 1; transform: none; }
 .radio-row input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
 .radio-row .rr-name { font-weight: 800; font-size: 15.5px; }
 .radio-row .rr-price { font-family: var(--font-mono); font-size: 12px; font-weight: 700; white-space: nowrap; }
+
+/* ---------- Драм-машина, форма ДМ-808 ---------- */
+
+.beat-row {
+  display: grid;
+  grid-template-columns: minmax(48px, 62px) repeat(8, 1fr);
+  gap: 6px;
+  align-items: center;
+}
+.beat-row + .beat-row { margin-top: 8px; }
+.beat-row__name {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.beat-cell { position: relative; }
+.beat-cell input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.beat-cell label {
+  display: block;
+  height: 38px;
+  border: 1.5px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper);
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+.beat-cell label:hover { border-color: var(--ink); }
+.beat-cell input:checked + label { background: var(--ink); border-color: var(--ink); }
+.beat-cell input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
+.beat-cell.now label { border-color: var(--ink); border-style: dashed; }
+.beat-cell.now input:checked + label { background: var(--ink-2); border-style: solid; }
+
+.beat-dots { margin-top: 12px; }
+.beat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  justify-self: center;
+}
+.beat-dot.on { background: var(--ink); border-color: var(--ink); }
+
+.beat-transport {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 26px;
+}
+.beat-tempo {
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 2px;
+  padding: 9px 10px;
+}
+.beat-tempo:focus-visible { outline: none; border-color: var(--ink); }
 
 /* ---------- Аккордеон FAQ ---------- */
 

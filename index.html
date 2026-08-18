@@ -5,9 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DOPE MUSIC: студия звукозаписи в Перми. Запись, лейбл, продакшн</title>
   <meta name="description" content="Первая автоматизированная студия звукозаписи Перми. Запись 24/7, сведение, мастеринг, дистрибуция и обложки. Петропавловская, 40. Бронь онлайн.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DOPE MUSIC">
+  <meta property="og:title" content="DOPE MUSIC: студия звукозаписи в Перми. Запись, лейбл, продакшн">
+  <meta property="og:description" content="Первая автоматизированная студия звукозаписи Перми. Запись 24/7, сведение, мастеринг, дистрибуция и обложки. Петропавловская, 40. Бронь онлайн.">
+  <meta property="og:image" content="https://kidw3st.github.io/dopemusic/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/main.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("dm-shift")==="night")document.documentElement.setAttribute("data-shift","night")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <!--
@@ -48,7 +56,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <a href="services.html">Цены</a>
       <a href="contacts.html">Контакты</a>
     </nav>
-    <button class="shift-toggle" type="button" aria-pressed="false" aria-label="Ночная смена: переключить тему" title="Ночная смена"><span aria-hidden="true">Д</span><span class="shift-toggle__track" aria-hidden="true"><span class="shift-toggle__knob"></span></span><span aria-hidden="true">Н</span></button>
     <a class="nav-cta" href="booking.html">Бронь ✱ 24/7</a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">
       <span></span><span></span><span></span>
@@ -217,7 +224,80 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     </div>
   </section>
 
-  <!-- ЛИСТ 4: ночь, 24/7 -->
+  <hr class="cutline">
+
+  <!-- ЛИСТ 4: драм-машина -->
+  <section class="sheet" aria-labelledby="beatTitle">
+    <div class="wrap">
+      <div class="running-head">
+        <span class="mono">Проба звука ✱ форма ДМ-808</span>
+        <span class="mono">три дорожки ✱ восемь шагов</span>
+      </div>
+      <div class="two-col">
+        <div>
+          <h2 class="h-sec rv" id="beatTitle">Собери бит, не вставая с места</h2>
+          <p class="lead rv" style="margin-top:16px">Мини-секвенсор прямо на странице: отмечай клетки и жми пуск, звук синтезируется в браузере. Понравился грув: приходи, разложим его в настоящий трек.</p>
+          <div class="beat-transport rv">
+            <button class="btn" type="button" id="btPlay" aria-pressed="false">Пуск</button>
+            <button class="btn btn--ghost" type="button" id="btClear">Сброс</button>
+            <label class="mono mono-b" for="btTempo" style="display:inline-flex; align-items:center; gap:8px">Темп
+              <select id="btTempo" class="beat-tempo">
+                <option value="90">90</option>
+                <option value="105">105</option>
+                <option value="120" selected>120</option>
+                <option value="135">135</option>
+                <option value="150">150</option>
+              </select>
+            </label>
+            <span class="mono mono-sm muted">BPM</span>
+          </div>
+          <p class="mono mono-sm muted rv" style="margin-top:16px">Понравилось играть? <a href="booking.html">Бронируй сессию</a> и приноси грув ✱</p>
+        </div>
+        <div class="sheet-card rv" role="group" aria-label="Сетка драм-машины: три дорожки по восемь шагов">
+          <div class="beat-row">
+            <span class="beat-row__name">Бочка</span>
+            <span class="beat-cell" data-step="0"><input type="checkbox" id="btc-k-0" checked aria-label="Бочка, шаг 1"><label for="btc-k-0"></label></span>
+            <span class="beat-cell" data-step="1"><input type="checkbox" id="btc-k-1" aria-label="Бочка, шаг 2"><label for="btc-k-1"></label></span>
+            <span class="beat-cell" data-step="2"><input type="checkbox" id="btc-k-2" aria-label="Бочка, шаг 3"><label for="btc-k-2"></label></span>
+            <span class="beat-cell" data-step="3"><input type="checkbox" id="btc-k-3" aria-label="Бочка, шаг 4"><label for="btc-k-3"></label></span>
+            <span class="beat-cell" data-step="4"><input type="checkbox" id="btc-k-4" checked aria-label="Бочка, шаг 5"><label for="btc-k-4"></label></span>
+            <span class="beat-cell" data-step="5"><input type="checkbox" id="btc-k-5" aria-label="Бочка, шаг 6"><label for="btc-k-5"></label></span>
+            <span class="beat-cell" data-step="6"><input type="checkbox" id="btc-k-6" aria-label="Бочка, шаг 7"><label for="btc-k-6"></label></span>
+            <span class="beat-cell" data-step="7"><input type="checkbox" id="btc-k-7" aria-label="Бочка, шаг 8"><label for="btc-k-7"></label></span>
+          </div>
+          <div class="beat-row">
+            <span class="beat-row__name">Снейр</span>
+            <span class="beat-cell" data-step="0"><input type="checkbox" id="btc-s-0" aria-label="Снейр, шаг 1"><label for="btc-s-0"></label></span>
+            <span class="beat-cell" data-step="1"><input type="checkbox" id="btc-s-1" aria-label="Снейр, шаг 2"><label for="btc-s-1"></label></span>
+            <span class="beat-cell" data-step="2"><input type="checkbox" id="btc-s-2" checked aria-label="Снейр, шаг 3"><label for="btc-s-2"></label></span>
+            <span class="beat-cell" data-step="3"><input type="checkbox" id="btc-s-3" aria-label="Снейр, шаг 4"><label for="btc-s-3"></label></span>
+            <span class="beat-cell" data-step="4"><input type="checkbox" id="btc-s-4" aria-label="Снейр, шаг 5"><label for="btc-s-4"></label></span>
+            <span class="beat-cell" data-step="5"><input type="checkbox" id="btc-s-5" aria-label="Снейр, шаг 6"><label for="btc-s-5"></label></span>
+            <span class="beat-cell" data-step="6"><input type="checkbox" id="btc-s-6" checked aria-label="Снейр, шаг 7"><label for="btc-s-6"></label></span>
+            <span class="beat-cell" data-step="7"><input type="checkbox" id="btc-s-7" aria-label="Снейр, шаг 8"><label for="btc-s-7"></label></span>
+          </div>
+          <div class="beat-row">
+            <span class="beat-row__name">Хэт</span>
+            <span class="beat-cell" data-step="0"><input type="checkbox" id="btc-h-0" checked aria-label="Хэт, шаг 1"><label for="btc-h-0"></label></span>
+            <span class="beat-cell" data-step="1"><input type="checkbox" id="btc-h-1" aria-label="Хэт, шаг 2"><label for="btc-h-1"></label></span>
+            <span class="beat-cell" data-step="2"><input type="checkbox" id="btc-h-2" checked aria-label="Хэт, шаг 3"><label for="btc-h-2"></label></span>
+            <span class="beat-cell" data-step="3"><input type="checkbox" id="btc-h-3" aria-label="Хэт, шаг 4"><label for="btc-h-3"></label></span>
+            <span class="beat-cell" data-step="4"><input type="checkbox" id="btc-h-4" checked aria-label="Хэт, шаг 5"><label for="btc-h-4"></label></span>
+            <span class="beat-cell" data-step="5"><input type="checkbox" id="btc-h-5" aria-label="Хэт, шаг 6"><label for="btc-h-5"></label></span>
+            <span class="beat-cell" data-step="6"><input type="checkbox" id="btc-h-6" checked aria-label="Хэт, шаг 7"><label for="btc-h-6"></label></span>
+            <span class="beat-cell" data-step="7"><input type="checkbox" id="btc-h-7" aria-label="Хэт, шаг 8"><label for="btc-h-7"></label></span>
+          </div>
+          <div class="beat-row beat-dots" aria-hidden="true">
+            <span></span>
+            <span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span>
+          </div>
+          <p class="mono mono-sm muted" style="margin-top:14px">Синтез в браузере ✱ сэмплы не используются</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЛИСТ 5: ночь, 24/7 -->
   <section class="night" aria-labelledby="nightTitle" style="--mark-hole: var(--night)">
     <div class="wrap" style="padding-top:clamp(44px,7vw,90px); padding-bottom:clamp(44px,7vw,90px)">
       <div class="running-head">
@@ -304,5 +384,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/vinyl.js"></script>
+<script src="assets/js/beatmachine.js"></script>
 </body>
 </html>
