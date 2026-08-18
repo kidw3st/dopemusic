@@ -129,6 +129,9 @@ a { color: inherit; }
 
 h1, h2, h3, h4, p, ul, ol, dl, figure { margin: 0; }
 
+/* аккуратные концы абзацев: без висячих одиночных слов */
+p, li, figcaption { text-wrap: pretty; }
+
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -152,7 +155,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .h-display {
   font-weight: 1000;
-  font-size: clamp(44px, 9.2vw, 118px);
+  font-size: clamp(44px, 13.5vw, 118px);
   line-height: 0.94;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -788,6 +791,31 @@ html.js .rv.on { opacity: 1; transform: none; }
   .station { grid-template-columns: 1fr; gap: 10px; }
   .station > a { justify-self: start; }
 }
+
+/* строка «этапа» релизного цикла: номер, текст */
+.stage {
+  display: grid;
+  grid-template-columns: minmax(90px, 140px) 1fr;
+  gap: 18px;
+}
+@media (max-width: 640px) {
+  .stage { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* ряд кнопок, прижатый к правому краю на широких экранах */
+.end-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+@media (max-width: 860px) {
+  .end-row { justify-content: flex-start; }
+}
+
+/* широкая печатная схема: на узких экранах листается в своей рамке */
+.scheme-scroll { overflow-x: auto; }
+.scheme-scroll svg { min-width: 560px; }
 
 .stamp-note {
   display: inline-block;
