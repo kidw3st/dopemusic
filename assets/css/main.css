@@ -248,6 +248,18 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .pill--prod   { background: #EBBE6A; border-color: var(--ink); }
 .pill--ink    { background: var(--ink); color: var(--paper); }
 
+/* локап саб-бренда: три слова стопкой, третье в цвете направления (как в брендбуке) */
+.subbrand {
+  font-weight: 1000;
+  font-size: clamp(44px, 6vw, 84px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.subbrand .x-studio { color: var(--studio-deep); }
+.subbrand .x-label { color: var(--label); }
+.subbrand .x-prod { color: var(--prod); }
+
 /* ---------- Каркас страницы ---------- */
 
 .wrap {
