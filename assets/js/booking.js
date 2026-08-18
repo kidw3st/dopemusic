@@ -195,119 +195,6 @@
     return lines.join('\n');
   }
 
-  /* Печатный талон: PNG на canvas, в манере купонов бренда */
-  function renderTicket(state) {
-    var img = document.getElementById('bkTicketImg');
-    var save = document.getElementById('bkTicketSave');
-    var wrap = document.getElementById('bkTicketWrap');
-    if (!img || !save || !wrap) return;
-
-    var slot = form.querySelector('input[name="slot"]:checked');
-    var slotVal = slot ? slot.value : '19:00';
-    var dd = els.date.value.split('-');
-    var dateStr = dd[2] + '.' + dd[1] + '.' + dd[0];
-    var name = els.name.value.trim();
-
-    /* детерминированный номер талона и штрих-код из данных брони */
-    var seedStr = name + dateStr + slotVal;
-    var seed = 0;
-    for (var i = 0; i < seedStr.length; i++) seed = (seed * 31 + seedStr.charCodeAt(i)) % 100000;
-    var num = 'DM-' + String(1000 + seed % 9000);
-    var rnd = function () { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
-
-    var W = 360, H = 600, S = 2;
-    var cv = document.createElement('canvas');
-    cv.width = W * S; cv.height = H * S;
-    var c = cv.getContext('2d');
-    c.scale(S, S);
-
-    var draw = function () {
-      var ink = '#161513', paper = '#F5F4F1', mut = '#4A4843', line = '#C7C4BC';
-      c.fillStyle = paper; c.fillRect(0, 0, W, H);
-      c.strokeStyle = line; c.lineWidth = 1; c.strokeRect(0.5, 0.5, W - 1, H - 1);
-
-      /* шапка: словесный знак и пластинка */
-      c.fillStyle = ink;
-      c.font = '1000 26px Mulish, sans-serif';
-      c.fillText('DOPE MUSIC', 24, 46);
-      c.beginPath(); c.arc(316, 38, 16, 0, 7); c.fill();
-      c.fillStyle = paper; c.beginPath(); c.arc(316, 38, 6, 0, 7); c.fill();
-      c.fillStyle = ink; c.beginPath(); c.arc(316, 38, 2.5, 0, 7); c.fill();
-
-      c.fillStyle = mut;
-      c.font = '700 9px "Martian Mono", monospace';
-      c.fillText('ТАЛОН БРОНИ ✱ ФОРМА ДМ-01', 24, 64);
-      c.textAlign = 'right';
-      c.fillText('№ ' + num, W - 24, 64);
-      c.textAlign = 'left';
-
-      c.strokeStyle = '#A9A69E'; c.setLineDash([4, 4]);
-      c.beginPath(); c.moveTo(24, 76); c.lineTo(W - 24, 76); c.stroke();
-      c.setLineDash([]);
-
-      /* поля талона */
-      var y = 102;
-      var row = function (label, value, big) {
-        c.fillStyle = mut; c.font = '700 8.5px "Martian Mono", monospace';
-        c.fillText(label.toUpperCase(), 24, y);
-        c.fillStyle = ink; c.font = (big ? '1000 24px' : '800 15px') + ' Mulish, sans-serif';
-        c.fillText(value, 24, y + (big ? 28 : 19));
-        y += big ? 52 : 40;
-      };
-      row('Услуга', state.rate.name);
-      row('Дата', dateStr + ', начало в ' + slotVal);
-      row('Длительность', state.hours + ' ' + hourWord(state.hours) + (state.hours >= 5 ? ', час в подарок' : ''));
-      if (state.extras.length) row('Дополнительно', state.extras.join(', '));
-      if (state.discount) row('Купон ' + PROMO.code, 'минус ' + state.discount.toLocaleString('ru-RU') + ' ₽');
-      row('Итог по прайсу', 'от ' + state.total.toLocaleString('ru-RU') + ' ₽', true);
-      if (name) row('Имя', name);
-
-      /* перфорация */
-      var py = H - 128;
-      c.strokeStyle = '#A9A69E'; c.setLineDash([5, 5]);
-      c.beginPath(); c.moveTo(0, py); c.lineTo(W, py); c.stroke();
-      c.setLineDash([]);
-      c.fillStyle = paper;
-      c.beginPath(); c.arc(0, py, 9, 0, 7); c.fill();
-      c.beginPath(); c.arc(W, py, 9, 0, 7); c.fill();
-      c.strokeStyle = line;
-      c.beginPath(); c.arc(0, py, 9, 0, 7); c.stroke();
-      c.beginPath(); c.arc(W, py, 9, 0, 7); c.stroke();
-
-      /* штрих-код корешка */
-      var bx = 24, bw;
-      c.fillStyle = ink;
-      while (bx < 210) {
-        bw = 1 + Math.floor(rnd() * 3);
-        c.fillRect(bx, py + 22, bw, 44);
-        bx += bw + 2 + Math.floor(rnd() * 4);
-      }
-      c.font = '1000 20px Mulish, sans-serif';
-      c.textAlign = 'right';
-      c.fillText(slotVal, W - 24, py + 52);
-      c.textAlign = 'left';
-
-      c.fillStyle = mut; c.font = '500 8px "Martian Mono", monospace';
-      c.fillText('ПЕТРОПАВЛОВСКАЯ, 40 ✱ ПЕРМЬ ✱ ПН-ВС 24/7', 24, py + 84);
-      c.fillText('СЛОТ ПОДТВЕРЖДАЕТ АДМИНИСТРАТОР В TELEGRAM', 24, py + 98);
-
-      var url = cv.toDataURL('image/png');
-      img.src = url;
-      save.href = url;
-      wrap.hidden = false;
-    };
-
-    if (document.fonts && document.fonts.load) {
-      Promise.all([
-        document.fonts.load('1000 26px Mulish'),
-        document.fonts.load('800 15px Mulish'),
-        document.fonts.load('700 9px "Martian Mono"')
-      ]).then(draw, draw);
-    } else {
-      draw();
-    }
-  }
-
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!validate()) {
@@ -324,7 +211,6 @@
         ? 'Текст заявки скопирован. Открыли чат студии в Telegram: вставьте сообщение и отправьте. Ответ обычно в течение часа.'
         : 'Скопируйте текст заявки ниже и отправьте его в Telegram @DOPEMUSIC_PERM. Ответ обычно в течение часа.';
       document.getElementById('bkMsgOut').textContent = msg;
-      renderTicket(state);
       els.done.scrollIntoView({ block: 'center' });
       try { localStorage.removeItem(DRAFT_KEY); } catch (err) { }
       window.open('https://t.me/DOPEMUSIC_PERM', '_blank', 'noopener');

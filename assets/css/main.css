@@ -243,10 +243,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: transparent;
   white-space: nowrap;
 }
-/* цветные пилюли печатаются одинаково в обеих сменах: тёмная краска по плашке */
-.pill--studio { background: var(--studio); border-color: #161513; color: #161513; }
-.pill--label  { background: #9DBEEA; border-color: #161513; color: #161513; }
-.pill--prod   { background: #EBBE6A; border-color: #161513; color: #161513; }
+.pill--studio { background: var(--studio); border-color: var(--ink); }
+.pill--label  { background: #9DBEEA; border-color: var(--ink); }
+.pill--prod   { background: #EBBE6A; border-color: var(--ink); }
 .pill--ink    { background: var(--ink); color: var(--paper); }
 
 /* ---------- Каркас страницы ---------- */
@@ -475,26 +474,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   to   { transform: rotate(360deg); }
 }
 
-/* печать-пластинка: кликом играет, драгом скретчится */
-.vinyl-btn {
-  display: block;
-  touch-action: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.vinyl-btn:active { transform: none; }
-.vinyl-spin { transform-box: fill-box; transform-origin: center; }
-.vinyl-btn.playing .vinyl-spin { animation: vinyl-rot 1.8s linear infinite; }
-.vinyl-btn.playing .badge-stamp__ring { animation-duration: 9s; }
-@keyframes vinyl-rot {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-.vinyl-hint { text-align: center; margin-top: 12px; }
-@media (prefers-reduced-motion: reduce) {
-  .vinyl-btn.playing .vinyl-spin { animation: none; }
-}
-
 /* ---------- Reveal при скролле ---------- */
 
 /* скрытое стартовое состояние существует только при работающем JS:
@@ -555,14 +534,6 @@ html.js .rv.on { opacity: 1; transform: none; }
 }
 .coupon__tear::before { left: -11px; clip-path: inset(0 0 0 50%); }
 .coupon__tear::after { right: -11px; clip-path: inset(0 50% 0 0); }
-
-/* сумма на корешке купона */
-.coupon-sum {
-  font-weight: 1000;
-  font-size: clamp(38px, 4.5vw, 54px);
-  letter-spacing: -0.02em;
-  margin-top: 6px;
-}
 
 /* штрих-код из двух слоёв печати */
 .barcode {
@@ -721,73 +692,6 @@ html.js .rv.on { opacity: 1; transform: none; }
 .radio-row input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
 .radio-row .rr-name { font-weight: 800; font-size: 15.5px; }
 .radio-row .rr-price { font-family: var(--font-mono); font-size: 12px; font-weight: 700; white-space: nowrap; }
-
-/* ---------- Драм-машина, форма ДМ-808 ---------- */
-
-.beat-row {
-  display: grid;
-  grid-template-columns: minmax(48px, 62px) repeat(8, 1fr);
-  gap: 6px;
-  align-items: center;
-}
-.beat-row + .beat-row { margin-top: 8px; }
-.beat-row__name {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-.beat-cell { position: relative; }
-.beat-cell input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.beat-cell label {
-  display: block;
-  height: 38px;
-  border: 1.5px solid var(--line);
-  border-radius: 2px;
-  background: var(--paper);
-  cursor: pointer;
-  transition: border-color 120ms ease, background-color 120ms ease;
-}
-.beat-cell label:hover { border-color: var(--ink); }
-.beat-cell input:checked + label { background: var(--ink); border-color: var(--ink); }
-.beat-cell input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
-.beat-cell.now label { border-color: var(--ink); border-style: dashed; }
-.beat-cell.now input:checked + label { background: var(--ink-2); border-style: solid; }
-
-.beat-dots { margin-top: 12px; }
-.beat-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: 1.5px solid var(--line);
-  justify-self: center;
-}
-.beat-dot.on { background: var(--ink); border-color: var(--ink); }
-
-.beat-transport {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  margin-top: 26px;
-}
-.beat-tempo {
-  font: inherit;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  color: var(--ink);
-  background: var(--paper);
-  border: 1.5px solid var(--line);
-  border-radius: 2px;
-  padding: 9px 10px;
-}
-.beat-tempo:focus-visible { outline: none; border-color: var(--ink); }
 
 /* ---------- Аккордеон FAQ ---------- */
 
