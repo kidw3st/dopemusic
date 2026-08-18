@@ -602,6 +602,14 @@ html.js .rv.on { opacity: 1; transform: none; }
 .coupon__tear::before { left: -11px; clip-path: inset(0 0 0 50%); }
 .coupon__tear::after { right: -11px; clip-path: inset(0 50% 0 0); }
 
+/* сумма на корешке купона */
+.coupon-sum {
+  font-weight: 1000;
+  font-size: clamp(38px, 4.5vw, 54px);
+  letter-spacing: -0.02em;
+  margin-top: 6px;
+}
+
 /* штрих-код из двух слоёв печати */
 .barcode {
   height: 44px;
