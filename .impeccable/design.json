@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-18T12:00:00+05:00",
+  "title": "Design System: Dope Music Studio & Label",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Бумага", "canonical": "#E9E7E2" },
+      "sheet": { "role": "neutral", "displayName": "Лист", "canonical": "#F5F4F1" },
+      "sheet-dim": { "role": "neutral", "displayName": "Лист приглушённый (резерв, в вёрстке не используется)", "canonical": "#DEDCD6" },
+      "ink": { "role": "neutral", "displayName": "Краска", "canonical": "#161513" },
+      "ink-2": { "role": "neutral", "displayName": "Краска вторая", "canonical": "#4A4843" },
+      "line": { "role": "neutral", "displayName": "Линия", "canonical": "#C7C4BC" },
+      "dash": { "role": "neutral", "displayName": "Пунктир (литерал в CSS, не var)", "canonical": "#A9A69E" },
+      "night": { "role": "neutral", "displayName": "Ночь", "canonical": "#1B1A18" },
+      "night-2": { "role": "neutral", "displayName": "Ночь-2", "canonical": "#262421" },
+      "paper-on-night": { "role": "neutral", "displayName": "Бумага на ночи", "canonical": "#E5E3DD" },
+      "night-muted": { "role": "neutral", "displayName": "Ночной приглушённый (литерал)", "canonical": "#8F8C85" },
+      "night-lead": { "role": "neutral", "displayName": "Ночной лид (литерал)", "canonical": "#B9B6AF" },
+      "studio": { "role": "primary", "displayName": "Лаванда Studio", "canonical": "#A98BC8" },
+      "studio-deep": { "role": "primary", "displayName": "Лаванда глубокая (дуотон обложек)", "canonical": "#63467F" },
+      "label": { "role": "primary", "displayName": "Синий Label (канон брендбука, токен-резерв)", "canonical": "#3D6BC6" },
+      "label-deep": { "role": "primary", "displayName": "Синий глубокий (токен-резерв)", "canonical": "#2C4E93" },
+      "pill-label": { "role": "primary", "displayName": "Голубой пилюли Label", "canonical": "#9DBEEA" },
+      "prod": { "role": "primary", "displayName": "Янтарь Production", "canonical": "#D89A3D" },
+      "prod-deep": { "role": "primary", "displayName": "Янтарь глубокий (токен-резерв)", "canonical": "#8A5D14" },
+      "pill-prod": { "role": "primary", "displayName": "Янтарь пилюли", "canonical": "#EBBE6A" },
+      "stamp": { "role": "secondary", "displayName": "Красный штамп", "canonical": "#A33A2A" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Афиша главной и сумма купона; с подводкой .h-display__lead (400, 0.36em)." },
+      "page": { "displayName": "Page", "purpose": "H1 внутренних страниц." },
+      "section": { "displayName": "Section", "purpose": "H2 листов." },
+      "sub": { "displayName": "Sub", "purpose": "H3, без верхнего регистра." },
+      "lead": { "displayName": "Lead", "purpose": "Подзаголовок-лид, max-width 34em." },
+      "body": { "displayName": "Body", "purpose": "Базовый текст 17px/1.55; длинные тексты в .prose (68ch)." },
+      "mono": { "displayName": "Mono", "purpose": "Колонтитулы, штампы, ценники; вариации 10.5-14px, всегда uppercase с положительным трекингом." }
+    },
+    "shadows": [
+      {
+        "name": "radio-checked-inset",
+        "value": "inset 0 0 0 1px var(--ink)",
+        "purpose": "Единственный box-shadow системы: удвоение рамки выбранной радио-плашки. Настоящих теней в мире нет."
+      }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Основная кривая: reveal, бургер, чекбокс, FAQ-плюс, skip-link." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Объявлена в :root, в вёрстке пока не используется; резерв." },
+      { "name": "duration-micro", "value": "120-160ms ease", "purpose": "Цветовые переходы hover/focus: кнопки, ссылки, рамки полей и слотов." },
+      { "name": "duration-structural", "value": "200ms", "purpose": "Бургер-крест и поворот плюса FAQ (с ease-out)." },
+      { "name": "reveal", "value": "480ms ease-out, translateY(14px), stagger 60ms (max 6)", "purpose": "Появление .rv при скролле; активен только при html.js; IO rootMargin -8%, threshold 0.12." },
+      { "name": "ticker-roll", "value": "36s linear infinite, translateX(-50%)", "purpose": "Бегущая строка (контент продублирован)." },
+      { "name": "stamp-spin", "value": "28s linear infinite, rotate(360deg)", "purpose": "Кольцевой текст круглой печати." },
+      { "name": "reduced-motion", "value": "reveal: opacity 200ms; остальное off", "purpose": "prefers-reduced-motion останавливает тикер, печать и микропереходы; scroll-behavior auto." }
+    ],
+    "breakpoints": [
+      { "name": "fields-stack", "value": "640px" },
+      { "name": "columns-stack", "value": "860px" },
+      { "name": "nav-burger", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Краска на бумаге; hover инвертирует в прозрачный с чернильной рамкой.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Забронировать сессию</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Martian Mono', 'Courier New', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; color: #E9E7E2; background: #161513; border: 1.5px solid #161513; border-radius: 0; padding: 15px 26px 14px; transition: background-color 140ms ease, color 140ms ease; } .ds-btn:hover { background: transparent; color: #161513; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid #161513; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Прозрачная кнопка с чернильной рамкой; hover заливает краской.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Смотреть весь прайс</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 10px; font-family: 'Martian Mono', 'Courier New', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; color: #161513; background: transparent; border: 1.5px solid #161513; border-radius: 0; padding: 15px 26px 14px; transition: background-color 140ms ease, color 140ms ease; } .ds-btn-ghost:hover { background: #161513; color: #E9E7E2; } .ds-btn-ghost:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Paper Button (night)",
+      "kind": "button",
+      "refersTo": "button-paper",
+      "description": "Кнопка для ночных секций: бумага на тёмном фоне.",
+      "html": "<div class=\"ds-night-canvas\"><a class=\"ds-btn-paper\" href=\"#\">Выбрать время</a></div>",
+      "css": ".ds-night-canvas { background: #1B1A18; padding: 24px; } .ds-btn-paper { display: inline-flex; align-items: center; gap: 10px; font-family: 'Martian Mono', 'Courier New', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; color: #161513; background: #E9E7E2; border: 1.5px solid #E9E7E2; border-radius: 0; padding: 15px 26px 14px; transition: background-color 140ms ease, color 140ms ease; } .ds-btn-paper:hover { background: transparent; color: #E9E7E2; }"
+    },
+    {
+      "name": "Nav CTA Pill",
+      "kind": "nav",
+      "refersTo": "nav-cta",
+      "description": "Чёрная пилюля брони в шапке; hover: инверсия.",
+      "html": "<a class=\"ds-nav-cta\" href=\"#\">Бронь ✱ 24/7</a>",
+      "css": ".ds-nav-cta { font-family: 'Martian Mono', 'Courier New', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; color: #E9E7E2; background: #161513; border: 1.5px solid #161513; border-radius: 999px; padding: 9px 18px 8px; transition: background-color 140ms ease, color 140ms ease; } .ds-nav-cta:hover { background: transparent; color: #161513; }"
+    },
+    {
+      "name": "Sub-brand Pills",
+      "kind": "chip",
+      "refersTo": "pill-studio",
+      "description": "Неинтерактивные типографские метки трёх направлений и инверсный вариант.",
+      "html": "<span class=\"ds-pill ds-pill--studio\">Studio</span> <span class=\"ds-pill ds-pill--label\">Label</span> <span class=\"ds-pill ds-pill--prod\">Production</span> <span class=\"ds-pill ds-pill--ink\">Dope Music</span>",
+      "css": ".ds-pill { display: inline-block; font-family: 'Martian Mono', 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; padding: 7px 14px 6px; border: 1.5px solid #161513; border-radius: 999px; color: #161513; background: transparent; white-space: nowrap; } .ds-pill--studio { background: #A98BC8; } .ds-pill--label { background: #9DBEEA; } .ds-pill--prod { background: #EBBE6A; } .ds-pill--ink { background: #161513; color: #E9E7E2; }"
+    },
+    {
+      "name": "Field Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Поле талона: моно-ярлык, бумажный фон, фокус чернильной рамкой.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">6. Как вас зовут</span><input class=\"ds-field__input\" type=\"text\" placeholder=\"Имя или псевдоним\"></label>",
+      "css": ".ds-field { display: block; max-width: 340px; } .ds-field__label { display: flex; justify-content: space-between; gap: 10px; font-family: 'Martian Mono', 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 7px; color: #4A4843; } .ds-field__input { width: 100%; font-family: Mulish, 'Segoe UI', sans-serif; font-size: 16px; color: #161513; background: #E9E7E2; border: 1.5px solid #C7C4BC; border-radius: 2px; padding: 12px 14px; transition: border-color 140ms ease; } .ds-field__input:focus-visible { outline: none; border-color: #161513; }"
+    },
+    {
+      "name": "Price Row",
+      "kind": "custom",
+      "refersTo": "price-row",
+      "description": "Сигнатурная строка прайса: имя, точечная подводка, моно-значение.",
+      "html": "<ul class=\"ds-price-list\"><li class=\"ds-price-row\"><span class=\"ds-price-row__name\">Запись со звукорежиссёром<span class=\"ds-price-row__note\">отстройка звука, запись, черновой микс</span></span><span class=\"ds-price-row__dots\"></span><span class=\"ds-price-row__val\">от 1 200 ₽/час</span></li><li class=\"ds-price-row ds-price-row--dashed\"><span class=\"ds-price-row__name\">Самостоятельная сессия</span><span class=\"ds-price-row__dots\"></span><span class=\"ds-price-row__val\">от 800 ₽/час</span></li></ul>",
+      "css": ".ds-price-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid #C7C4BC; } .ds-price-row { display: flex; align-items: baseline; gap: 12px; padding: 13px 0; } .ds-price-row--dashed { border-top: 1px dashed #C7C4BC; } .ds-price-row__name { font-family: Mulish, 'Segoe UI', sans-serif; font-weight: 700; font-size: 16.5px; letter-spacing: -0.01em; color: #161513; } .ds-price-row__note { display: block; font-weight: 500; font-size: 13.5px; color: #4A4843; margin-top: 2px; } .ds-price-row__dots { flex: 1; min-width: 24px; border-bottom: 2px dotted #A9A69E; transform: translateY(-4px); } .ds-price-row__val { font-family: 'Martian Mono', 'Courier New', monospace; font-size: 14px; font-weight: 700; white-space: nowrap; color: #161513; }"
+    },
+    {
+      "name": "Coupon",
+      "kind": "card",
+      "refersTo": "coupon",
+      "description": "Сигнатурный купон с перфорацией-высечками и штрих-кодом.",
+      "html": "<div class=\"ds-coupon\"><div class=\"ds-coupon__body\"><p class=\"ds-coupon__mono\">На все услуги студии</p><p class=\"ds-coupon__sum\">2500 ₽</p></div><div class=\"ds-coupon__tear\"></div><div class=\"ds-coupon__body\"><div class=\"ds-barcode\"></div></div></div>",
+      "css": ".ds-coupon { background: #F5F4F1; border: 1px solid #C7C4BC; position: relative; max-width: 420px; } .ds-coupon__body { padding: 28px; text-align: center; } .ds-coupon__mono { margin: 0; font-family: 'Martian Mono', 'Courier New', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #161513; } .ds-coupon__sum { margin: 6px 0 0; font-family: Mulish, 'Segoe UI', sans-serif; font-weight: 1000; font-size: 56px; letter-spacing: -0.03em; line-height: 0.94; color: #161513; } .ds-coupon__tear { border-top: 2px dashed #A9A69E; position: relative; } .ds-coupon__tear::before, .ds-coupon__tear::after { content: \"\"; position: absolute; top: -11px; width: 20px; height: 20px; border-radius: 50%; background: #E9E7E2; border: 1px solid #C7C4BC; } .ds-coupon__tear::before { left: -11px; clip-path: inset(0 0 0 50%); } .ds-coupon__tear::after { right: -11px; clip-path: inset(0 50% 0 0); } .ds-barcode { height: 44px; background-image: repeating-linear-gradient(90deg, #161513 0 2px, transparent 2px 6px), repeating-linear-gradient(90deg, #161513 0 4px, transparent 4px 11px); }"
+    },
+    {
+      "name": "Stamp Note",
+      "kind": "custom",
+      "refersTo": "stamp-note",
+      "description": "Плашка ручного штампа для статусов и предупреждений, повёрнута на -1.6 градуса.",
+      "html": "<span class=\"ds-stamp-note\">Заявка собрана</span>",
+      "css": ".ds-stamp-note { display: inline-block; font-family: 'Martian Mono', 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #A33A2A; border: 1.5px solid #A33A2A; padding: 6px 10px 5px; transform: rotate(-1.6deg); }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Ссылка навигации: моно-капс с нижним бордером; текущая страница: чернильный бордер и вес 700.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Студия</a><a href=\"#\" aria-current=\"page\">Лейбл</a><a href=\"#\">Цены</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 24px; } .ds-nav a { font-family: 'Martian Mono', 'Courier New', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: #161513; padding: 6px 2px; border-bottom: 2px solid transparent; transition: border-color 140ms ease, color 140ms ease; } .ds-nav a:hover { border-bottom-color: #C7C4BC; } .ds-nav a[aria-current=\"page\"] { border-bottom-color: #161513; font-weight: 700; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Печатный цех студии",
+    "overview": "Сайт свёрстан как собственная печатная продукция Dope Music: афиша, купон, визитка, опись, талон. Каждая страница: стопка «листов» с колонтитулами, линиями отреза с ножницами, дата-штампами, номерами форм и штрих-кодами; это сознательный отказ от шаблона «тёмный музыкальный лендинг с неоном и глянцем». Материал мира: светло-серая «бумага» #E9E7E2 с печатным зерном и почти чёрная «краска» #161513; три саб-бренда получают по акценту (лаванда Studio, синий Label, янтарь Production), ночные секции: тёмная вставка #1B1A18. Всё плоское: без теней, градиентных заливок и фотографий; вся графика: inline-SVG в векторной грамматике брендбука Behance «Dope Music Studio + Label new visual identity» (июль 2025).",
+    "keyCharacteristics": [
+      "Страница = стопка нумерованных печатных листов, разделённых пунктирными линиями отреза.",
+      "Два голоса: жирный гротеск Mulish 900-1000 в верхнем регистре и служебный Martian Mono uppercase.",
+      "Акценты живут только в пилюлях, штампах и SVG-макетах; поля страниц всегда бумага или ночь.",
+      "Ховеры меняют только цвет; движение медленное и «механическое» (печать 28s, тикер 36s).",
+      "Всё без бэкенда и CDN: self-hosted шрифты, inline-SVG, деградация без JS полная."
+    ],
+    "rules": [
+      { "name": "Правило полей листа", "body": "Акцентные цвета живут только в пилюлях саб-брендов, красных штампах и SVG-макетах обложек. Поля страницы всегда бумага или ночь; акцент никогда не заливает секцию, кнопку или текст.", "section": "colors" },
+      { "name": "Правило штампа", "body": "#A33A2A: это чернила ручного штампа: ошибка, пометка, метка на карте. Он не участвует в брендинге саб-направлений и не используется как «красивый красный».", "section": "colors" },
+      { "name": "Правило двух регистров", "body": "Заголовки Mulish: верхний регистр с отрицательным трекингом (-0.02…-0.03em); всё моно: верхний регистр с положительным (+0.04…+0.08em). Текст никогда не опускается ниже веса 500.", "section": "typography" },
+      { "name": "Правило рубля", "body": "Цены набираются моно с неразрывным «₽»; сабсеты *-latext.woff2 не удалять, иначе ₽ выпадет в fallback.", "section": "typography" },
+      { "name": "Правило плоской печати", "body": "Никаких box-shadow, drop-shadow, градиентных заливок и blur. Новый слой = светлее/темнее бумага + бордер. Исключение одно и уже существует: inset-рамка выбранного радио.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do собирай новую страницу как стопку листов: .sheet + .running-head (mono, разделитель ✱, [data-datestamp]) + hr.cutline между листами; ночные вставки: .night с --mark-hole: var(--night).",
+      "Do держи акценты только в пилюлях, штампах и SVG-макетах обложек; поля страницы: бумага или ночь.",
+      "Do меняй на hover только цвет (background-color / color / border-color, 120-160ms ease); фокус: :focus-visible 2px ink.",
+      "Do прячь блоки до появления только через html.js .rv (reveal 480ms var(--ease-out), сдвиг 14px, ступень 60ms): без JS всё видимо.",
+      "Do рисуй любую графику inline-SVG в грамматике бренда: винил с «ушами», фейдер, четырёхлучевая звезда, штрих-код, печать, штриховка-паттерн; текст в SVG: те же Mulish/Martian Mono.",
+      "Do уважай prefers-reduced-motion: reveal только opacity 200ms, тикер и печать останавливаются, микропереходы отключаются.",
+      "Do ставь разделитель ✱ (U+2731) в моно-строках и стройфразы через двоеточия и запятые.",
+      "Do используй overflow-x: clip на body и text-wrap: balance на заголовках: они уже в базе, не отменяй."
+    ],
+    "donts": [
+      "Don't не используй цветовые градиенты, неон, глянец и тёмный дефолт музыкальных лендингов (repeating-linear-gradient в .barcode: печатный растр, не градиентная заливка, и не повод для других).",
+      "Don't не добавляй тени; единственная допустимая: inset 0 0 0 1px var(--ink) на checked-радио.",
+      "Don't не трансформируй элементы на hover (scale, translate, rotate запрещены; только :active кнопки: translateY(1px)).",
+      "Don't не используй тире (em/en dash) в текстах: пожелание владельца; двоеточия и запятые.",
+      "Don't не вводи радиусы кроме 0 / 2px / 999px и не скругляй карточки, кнопки, купоны.",
+      "Don't не ставь фотографии: сейчас их нет вовсе; при появлении: только дуотон/зерно по брендбуку.",
+      "Don't не выдумывай отзывы, награды и метрики прослушиваний; факты (адрес, телефон, резиденты, слоганы) только из PRODUCT.md, допущения помечай ASSUMPTION.",
+      "Don't не подключай сторонние шрифты, иконки или CDN: только self-hosted сабсеты Mulish и Martian Mono (и не удаляй *-latext.woff2: там ₽)."
+    ]
+  }
+}

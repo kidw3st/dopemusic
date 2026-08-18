@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Бронь сессии в DOPE MUSIC: онлайн, круглосуточно</title>
+  <meta name="description" content="Забронируйте сессию в студии DOPE MUSIC в Перми: выбор даты и часа онлайн, расчёт стоимости, купон DOPE2500. Заявка уходит в Telegram студии.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="brand-lockup" href="index.html" aria-label="Dope Music, на главную">
+      <svg viewBox="0 0 120 104" aria-hidden="true" focusable="false">
+        <g transform="rotate(-14 46 54)">
+          <circle cx="46" cy="54" r="42" fill="currentColor"/>
+          <g fill="var(--mark-hole, #E9E7E2)">
+            <g transform="rotate(-52 46 54)"><rect x="41.8" y="8" width="8.4" height="18.6" rx="4.2"/></g>
+            <g transform="rotate(-26 46 54)"><rect x="41.8" y="8" width="8.4" height="18.6" rx="4.2"/></g>
+            <rect x="41.8" y="8" width="8.4" height="18.6" rx="4.2"/>
+            <circle cx="46" cy="54" r="16"/>
+            <path d="M28 72 q1.6 6.8 9 9 q-7.4 2.2 -9 9 q-1.6 -6.8 -9 -9 q7.4 -2.2 9 -9"/>
+          </g>
+          <circle cx="46" cy="54" r="7" fill="currentColor"/>
+        </g>
+        <rect x="98" y="12" width="5" height="66" rx="2.5" fill="currentColor"/>
+        <rect x="89.6" y="28" width="21.8" height="11" rx="3.6" fill="currentColor"/>
+      </svg>
+      Dope&nbsp;Music
+    </a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="studio.html">Студия</a>
+      <a href="label.html">Лейбл</a>
+      <a href="production.html">Продакшн</a>
+      <a href="services.html">Цены</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <a class="nav-cta" href="booking.html" aria-current="page">Бронь ✱ 24/7</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu wrap" id="mobileMenu" aria-label="Мобильная навигация">
+    <a href="studio.html">Студия</a>
+    <a href="label.html">Лейбл</a>
+    <a href="production.html">Продакшн</a>
+    <a href="services.html">Цены</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="booking.html" aria-current="page">Бронь ✱ 24/7</a>
+    <span class="mono muted">ул. Петропавловская, 40, Пермь ✱ <a href="tel:+79197090409">8 (919) 709-04-09</a></span>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="sheet sheet--flush" aria-labelledby="pageTitle">
+    <div class="wrap">
+      <div class="running-head" style="margin-top:22px">
+        <span class="mono">Талон брони ✱ форма ДМ-01</span>
+        <span class="mono"><span data-datestamp>2026</span> ✱ 24/7</span>
+      </div>
+      <h1 class="h-page rv" id="pageTitle">Бронь сессии</h1>
+      <p class="lead rv" style="margin-top:18px">Заполните талон: форма посчитает сумму по прайсу и подготовит заявку для Telegram студии. Оплата на месте, заявка ни к чему не обязывает.</p>
+      <noscript>
+        <p class="stamp-note" style="margin-top:18px">Форме нужен JavaScript. Без него просто напишите нам: t.me/DOPEMUSIC_PERM или 8 (919) 709-04-09</p>
+      </noscript>
+    </div>
+  </section>
+
+  <hr class="cutline">
+
+  <section class="sheet" aria-label="Форма брони">
+    <div class="wrap">
+      <form id="bookingForm" novalidate>
+        <div class="two-col two-col--talon">
+          <div>
+            <fieldset style="border:0; margin:0 0 26px; padding:0">
+              <legend class="mono mono-b" style="margin-bottom:12px">1. Услуга</legend>
+              <div class="radio-row">
+                <input type="radio" name="kind" value="engineer" id="kEng" checked>
+                <label for="kEng">
+                  <span class="rr-name">Запись со звукорежиссёром</span>
+                  <span class="rr-price">от 1 200 ₽/час</span>
+                </label>
+                <input type="radio" name="kind" value="self" id="kSelf">
+                <label for="kSelf">
+                  <span class="rr-name">Самостоятельная сессия</span>
+                  <span class="rr-price">от 800 ₽/час</span>
+                </label>
+                <input type="radio" name="kind" value="rent" id="kRent">
+                <label for="kRent">
+                  <span class="rr-name">Аренда: репетиция, подкаст</span>
+                  <span class="rr-price">от 1 000 ₽/час</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="two-col two-col--fields">
+              <label class="field" for="bkDate">
+                <span class="field__label"><span>2. Дата</span></span>
+                <input type="date" id="bkDate" name="date" required>
+                <span class="field__err">Выберите дату: сегодня или позже</span>
+              </label>
+              <label class="field" for="bkHours">
+                <span class="field__label"><span>3. Длительность</span><output id="bkHoursOut">2 часа</output></span>
+                <select id="bkHours" name="hours">
+                  <option value="1">1 час</option>
+                  <option value="2" selected>2 часа</option>
+                  <option value="3">3 часа</option>
+                  <option value="4">4 часа</option>
+                  <option value="5">5 часов: пятый в подарок</option>
+                  <option value="6">6 часов</option>
+                </select>
+              </label>
+            </div>
+
+            <fieldset style="border:0; margin:0 0 26px; padding:0">
+              <legend class="mono mono-b" style="margin-bottom:12px">4. Время начала</legend>
+              <div class="slot-grid" id="bkSlots"></div>
+              <p class="mono mono-sm muted" style="margin-top:10px">Студия работает круглосуточно ✱ занятые часы подтвердит администратор</p>
+            </fieldset>
+
+            <fieldset style="border:0; margin:0 0 26px; padding:0">
+              <legend class="mono mono-b" style="margin-bottom:4px">5. Дополнительно к сессии</legend>
+              <label class="check" for="bkX_mixing">
+                <input type="checkbox" id="bkX_mixing" name="mixing">
+                <span class="check__name">Сведение трека<br><span class="muted" style="font-weight:500; font-size:13.5px">до 30 дорожек, две правки</span></span>
+                <span class="check__price">+ 3 000 ₽</span>
+              </label>
+              <label class="check" for="bkX_mastering">
+                <input type="checkbox" id="bkX_mastering" name="mastering">
+                <span class="check__name">Мастеринг<br><span class="muted" style="font-weight:500; font-size:13.5px">громкость под стриминг</span></span>
+                <span class="check__price">+ 1 500 ₽</span>
+              </label>
+            </fieldset>
+
+            <div class="two-col two-col--fields">
+              <label class="field" for="bkName">
+                <span class="field__label"><span>6. Как вас зовут</span></span>
+                <input type="text" id="bkName" name="name" autocomplete="name" placeholder="Имя или псевдоним" required>
+                <span class="field__err">Напишите имя: хотя бы два знака</span>
+              </label>
+              <label class="field" for="bkContact">
+                <span class="field__label"><span>7. Телефон или Telegram</span></span>
+                <input type="text" id="bkContact" name="contact" autocomplete="tel" placeholder="+7 999 000-00-00 или @ник" required>
+                <span class="field__err">Нужен телефон с +7 либо ник вида @name</span>
+              </label>
+            </div>
+
+            <label class="field" for="bkPromo" style="max-width:340px">
+              <span class="field__label"><span>8. Купон, если есть</span></span>
+              <input type="text" id="bkPromo" name="promo" placeholder="DOPE2500" autocomplete="off">
+              <span class="mono mono-sm" id="bkPromoNote" style="display:none; margin-top:6px"></span>
+            </label>
+
+            <label class="check" for="bkAgree" style="border-bottom:0; max-width:56ch">
+              <input type="checkbox" id="bkAgree" required>
+              <span style="font-weight:500; font-size:14px" class="muted">Согласен на обработку персональных данных по <a href="privacy.html">политике конфиденциальности</a> и с условиями <a href="terms.html">оферты</a></span>
+            </label>
+          </div>
+
+          <!-- итоговый купон -->
+          <aside class="coupon" style="position:sticky; top:86px" aria-label="Расчёт стоимости">
+            <div class="coupon__body">
+              <p class="mono">Итог по прайсу</p>
+              <p style="font-weight:1000; font-size:clamp(38px,4.5vw,54px); letter-spacing:-0.02em; margin-top:6px" id="bkTotal">от 2 400 ₽</p>
+              <p class="mono mono-sm muted" id="bkTotalLine" style="margin-top:10px; line-height:1.7">Запись со звукорежиссёром, 2 часа</p>
+            </div>
+            <div class="coupon__tear" aria-hidden="true"></div>
+            <div class="coupon__body">
+              <button class="btn btn--wide" type="submit">Отправить заявку в Telegram</button>
+              <p class="mono mono-sm muted" style="margin-top:12px; text-align:center">Текст заявки скопируется сам: вставьте его в чат студии</p>
+              <div class="barcode" style="margin-top:16px" aria-hidden="true"></div>
+            </div>
+          </aside>
+        </div>
+      </form>
+
+      <!-- успех -->
+      <div id="bkDone" hidden>
+        <div class="coupon" style="max-width:680px; margin:0 auto">
+          <div class="coupon__body">
+            <p class="stamp-note">Заявка собрана</p>
+            <p class="lead" style="margin-top:14px" id="bkDoneText">Текст заявки скопирован.</p>
+          </div>
+          <div class="coupon__tear" aria-hidden="true"></div>
+          <div class="coupon__body">
+            <pre class="mono" id="bkMsgOut" style="white-space:pre-wrap; margin:0 0 16px; line-height:1.8"></pre>
+            <div style="display:flex; gap:12px; flex-wrap:wrap">
+              <a class="btn" href="https://t.me/DOPEMUSIC_PERM" rel="noopener">Открыть чат студии</a>
+              <a class="btn btn--ghost" href="tel:+79197090409">Позвонить</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <p style="font-weight:1000; font-size:26px; letter-spacing:-0.02em; text-transform:uppercase">Dope Music</p>
+        <p class="mono muted" style="margin-top:10px; max-width:34em">Making dope music since 2022 and further ✱ high quality sound only ✱ studio &amp; label</p>
+      </div>
+      <nav aria-label="Карта сайта">
+        <h2 class="mono mono-b" style="margin-bottom:14px">Разделы</h2>
+        <ul class="footer-links">
+          <li><a href="studio.html">Студия</a></li>
+          <li><a href="label.html">Лейбл</a></li>
+          <li><a href="production.html">Продакшн</a></li>
+          <li><a href="services.html">Цены и FAQ</a></li>
+          <li><a href="booking.html">Бронь</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="mono mono-b" style="margin-bottom:14px">Студия</h2>
+        <p class="mono" style="display:grid; gap:8px">
+          <span>ул. Петропавловская, 40, Пермь</span>
+          <span>пн-вс: круглосуточно</span>
+          <a href="tel:+79197090409">8 (919) 709-04-09</a>
+          <a href="https://t.me/DOPEMUSIC_PERM" rel="noopener">Telegram: @dopemusic_perm</a>
+          <a href="https://vk.com/dopemusicrecords" rel="noopener">VK: dopemusicrecords</a>
+          <a href="https://instagram.com/dopemusic.perm" rel="noopener">Instagram: dopemusic.perm</a>
+        </p>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span class="mono mono-sm">© 2022 <span data-year>2026</span> Dope Music Records ✱ Пермь</span>
+      <span class="mono mono-sm" style="display:flex; gap:18px; flex-wrap:wrap">
+        <a href="terms.html">Публичная оферта</a>
+        <a href="privacy.html">Политика конфиденциальности</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/booking.js"></script>
+</body>
+</html>
