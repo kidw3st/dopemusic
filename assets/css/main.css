@@ -755,6 +755,9 @@ html.js .rv.on { opacity: 1; transform: none; }
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 140ms ease;
+  /* ссылки лежат в grid-колонках: без этого растягиваются на всю ширину,
+     и линия подчёркивания «улетает» за текст */
+  justify-self: start;
 }
 .site-footer .mono a:hover, .footer-links a:hover { border-bottom-color: var(--ink); }
 .footer-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
@@ -852,6 +855,47 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 
 /* печать в потоке текста */
 .inline-star { font-weight: 400; }
+
+/* ---------- Скроллбар: ручка фейдера на дорожке ---------- */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink) var(--paper);
+}
+::-webkit-scrollbar { width: 13px; height: 13px; }
+::-webkit-scrollbar-track {
+  background: var(--paper);
+  border-left: 1.5px solid var(--line);
+}
+::-webkit-scrollbar-track:horizontal {
+  border-left: 0;
+  border-top: 1.5px solid var(--line);
+}
+/* ползунок: чернильная ручка фейдера с риской посередине */
+::-webkit-scrollbar-thumb {
+  border: 3px solid var(--paper);
+  border-radius: 2px;
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb:vertical {
+  min-height: 48px;
+  background: linear-gradient(
+    to bottom,
+    var(--ink) 0 calc(50% - 1.5px),
+    var(--paper) calc(50% - 1.5px) calc(50% + 1.5px),
+    var(--ink) calc(50% + 1.5px) 100%
+  );
+}
+::-webkit-scrollbar-thumb:horizontal {
+  min-width: 48px;
+  background: linear-gradient(
+    to right,
+    var(--ink) 0 calc(50% - 1.5px),
+    var(--paper) calc(50% - 1.5px) calc(50% + 1.5px),
+    var(--ink) calc(50% + 1.5px) 100%
+  );
+}
+::-webkit-scrollbar-corner { background: var(--paper); }
 
 /* ---------- Движение: бережный режим ---------- */
 
