@@ -147,11 +147,6 @@
     window.addEventListener("resize", function () { clearTimeout(ot); ot = setTimeout(runAll, 220); });
   }
 
-  /* Текущий год в подвале */
-  document.querySelectorAll('[data-year]').forEach(function (el) {
-    el.textContent = String(new Date().getFullYear());
-  });
-
   /* Штамп сегодняшней даты в колонтитулах: 2026 18/08 */
   var d = new Date();
   var pad = function (n) { return n < 10 ? '0' + n : String(n); };
