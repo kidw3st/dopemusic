@@ -130,6 +130,9 @@
         var row = document.createElement("span");
         row.style.display = "block";
         var first = line.replace(/^\s+/, "").charAt(0);
+        var tt = cs.textTransform;
+        if (tt === "uppercase") first = first.toUpperCase();
+        else if (tt === "lowercase") first = first.toLowerCase();
         if (first) {
           var m = probe.measureText(first);
           var ink = -m.actualBoundingBoxLeft; /* насколько чернила отступили от нуля */
