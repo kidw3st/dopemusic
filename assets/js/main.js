@@ -129,7 +129,7 @@
       lines.forEach(function (line) {
         var row = document.createElement("span");
         row.style.display = "block";
-        var first = line.replace(/^s+/, "").charAt(0);
+        var first = line.replace(/^\s+/, "").charAt(0);
         if (first) {
           var m = probe.measureText(first);
           var ink = -m.actualBoundingBoxLeft; /* насколько чернила отступили от нуля */
