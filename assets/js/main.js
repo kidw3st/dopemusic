@@ -57,6 +57,39 @@
     revealed.forEach(function (el) { el.classList.add('on'); });
   }
 
+  /* Бегущая строка: набиваем копиями, чтобы лента шла без разрывов
+     на любой ширине экрана, и держим постоянную скорость. */
+  var ticker = document.querySelector(".ticker__track");
+  if (ticker) {
+    var SPEED = 55; /* пикселей в секунду */
+    var sample = ticker.querySelector(".ticker__chunk");
+    if (sample) {
+      var pattern = sample.cloneNode(true);
+      var fill = function () {
+        ticker.style.animation = "none";
+        ticker.innerHTML = "";
+        ticker.appendChild(pattern.cloneNode(true));
+        var one = ticker.firstElementChild.offsetWidth;
+        if (!one) return;
+        /* одна половина ленты должна перекрывать экран целиком */
+        var perHalf = Math.max(1, Math.ceil(window.innerWidth / one) + 1);
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < perHalf * 2; i++) frag.appendChild(pattern.cloneNode(true));
+        ticker.innerHTML = "";
+        ticker.appendChild(frag);
+        ticker.style.setProperty("--ticker-dur", (one * perHalf / SPEED).toFixed(2) + "s");
+        ticker.style.animation = "";
+      };
+      fill();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fill);
+      var t = null;
+      window.addEventListener("resize", function () {
+        clearTimeout(t);
+        t = setTimeout(fill, 200);
+      });
+    }
+  }
+
   /* Текущий год в подвале */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());

@@ -449,7 +449,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .ticker__track {
   display: inline-flex;
   gap: 0;
-  animation: ticker-roll 36s linear infinite;
+  /* длительность считает скрипт по реальной ширине ленты: скорость постоянная */
+  animation: ticker-roll var(--ticker-dur, 36s) linear infinite;
   will-change: transform;
 }
 .ticker__chunk {
