@@ -90,6 +90,63 @@
     }
   }
 
+  /* Оптическое выравнивание заголовков.
+     У букв разные боковые полуапроши: круглая «С» и прямая «П» стоят правее нуля,
+     диагональная «Х» выходит левее. Математически строки ровные, а глаз видит рванину.
+     Считаем реальный вылет чернил первой буквы каждой строки и гасим его отступом. */
+  var optical = document.querySelectorAll(".h-display, .h-page, .h-sec");
+  if (optical.length && document.createRange) {
+    var probe = document.createElement("canvas").getContext("2d");
+
+    var splitLines = function (el, text) {
+      el.textContent = text;
+      var node = el.firstChild;
+      var r = document.createRange();
+      var cuts = [], top = null, from = 0;
+      for (var i = 0; i < text.length; i++) {
+        r.setStart(node, i); r.setEnd(node, i + 1);
+        var box = r.getBoundingClientRect();
+        if (!box.height) continue;
+        if (top === null) { top = box.top; continue; }
+        if (Math.abs(box.top - top) > 4) { cuts.push(text.slice(from, i)); from = i; top = box.top; }
+      }
+      cuts.push(text.slice(from));
+      return cuts;
+    };
+
+    var align = function (el) {
+      var text = el.getAttribute("data-line-text");
+      if (text === null) {
+        if (el.childNodes.length !== 1 || el.firstChild.nodeType !== 3) return;
+        text = el.textContent;
+        el.setAttribute("data-line-text", text);
+      }
+      if (!el.offsetParent && el.tagName !== "BODY") { el.textContent = text; return; }
+      var lines = splitLines(el, text);
+      var cs = getComputedStyle(el);
+      probe.font = cs.fontStyle + " " + cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      el.textContent = "";
+      lines.forEach(function (line) {
+        var row = document.createElement("span");
+        row.style.display = "block";
+        var first = line.replace(/^s+/, "").charAt(0);
+        if (first) {
+          var m = probe.measureText(first);
+          var ink = -m.actualBoundingBoxLeft; /* насколько чернила отступили от нуля */
+          if (isFinite(ink) && Math.abs(ink) < 40) row.style.marginLeft = (-ink).toFixed(2) + "px";
+        }
+        row.textContent = line;
+        el.appendChild(row);
+      });
+    };
+
+    var runAll = function () { optical.forEach(align); };
+    runAll();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(runAll);
+    var ot = null;
+    window.addEventListener("resize", function () { clearTimeout(ot); ot = setTimeout(runAll, 220); });
+  }
+
   /* Текущий год в подвале */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());
