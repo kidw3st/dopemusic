@@ -97,8 +97,10 @@
         <span class="mono">макеты, не релизы</span>
       </div>
       <h2 class="visually-hidden" id="showTitle">Примеры вёрстки обложек</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:16px">
-        <figure class="rv" style="margin:0">
+      <div class="carousel" role="group" aria-roledescription="карусель" aria-label="Макеты продакшна">
+        <div class="carousel__viewport">
+          <div class="carousel__track">
+        <figure class="carousel__slide rv">
           <svg viewBox="0 0 300 300" role="img" aria-label="Макет обложки: чёрный фон, виниловая пластинка и подпись single 001">
             <rect width="300" height="300" fill="#161513"/>
             <g transform="translate(84 66) scale(2.1)">
@@ -113,7 +115,7 @@
           </svg>
           <figcaption class="mono mono-sm muted" style="margin-top:8px">Обложка сингла • макет</figcaption>
         </figure>
-        <figure class="rv" style="margin:0">
+        <figure class="carousel__slide rv">
           <svg viewBox="0 0 300 300" role="img" aria-label="Макет обложки: паттерн из букв D и пластинок на светлом фоне">
             <rect width="300" height="300" fill="#F5F4F1"/>
             <g fill="#161513" opacity="0.85" font-family="Mulish, sans-serif" font-size="34" font-weight="1000">
@@ -129,7 +131,7 @@
           </svg>
           <figcaption class="mono mono-sm muted" style="margin-top:8px">Шаблон поста • макет</figcaption>
         </figure>
-        <figure class="rv" style="margin:0">
+        <figure class="carousel__slide rv">
           <svg viewBox="0 0 300 300" role="img" aria-label="Макет обложки EP: лавандовый дуотон с крупной типографикой">
             <rect width="300" height="300" fill="#63467F"/>
             <rect x="0" y="0" width="300" height="150" fill="#A98BC8"/>
@@ -143,7 +145,7 @@
           </svg>
           <figcaption class="mono mono-sm muted" style="margin-top:8px">Обложка EP • макет</figcaption>
         </figure>
-        <figure class="rv" style="margin:0">
+        <figure class="carousel__slide rv">
           <svg viewBox="0 0 300 300" role="img" aria-label="Макет афиши концерта: янтарный фон, штрих-код и дата">
             <rect width="300" height="300" fill="#D89A3D"/>
             <text x="22" y="74" font-family="Mulish, sans-serif" font-size="44" font-weight="1000" letter-spacing="-1.5" fill="#161513">LIVE</text>
@@ -157,6 +159,17 @@
           </svg>
           <figcaption class="mono mono-sm muted" style="margin-top:8px">Афиша • макет</figcaption>
         </figure>
+          </div>
+        </div>
+        <div class="carousel__bar">
+          <button class="carousel__btn" type="button" data-car-prev aria-label="Предыдущий макет">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="carousel__btn" type="button" data-car-next aria-label="Следующий макет">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel__dots" aria-hidden="true"></div>
+        </div>
       </div>
       <p class="mono mono-sm muted" style="margin-top:16px">Витрина собрана из учебных макетов в стиле бренда. Работы для артистов показываем лично: спросите в Telegram •</p>
     </div>

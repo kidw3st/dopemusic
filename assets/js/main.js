@@ -89,6 +89,92 @@
       });
     }
   }
+  /* Карусель макетов: стрелки, точки, свайп.
+     Зациклена: с последней позиции следующий шаг возвращает на первую. */
+  document.querySelectorAll(".carousel").forEach(function (root) {
+    var track = root.querySelector(".carousel__track");
+    var slides = root.querySelectorAll(".carousel__slide");
+    var prev = root.querySelector("[data-car-prev]");
+    var next = root.querySelector("[data-car-next]");
+    var dotsBox = root.querySelector(".carousel__dots");
+    if (!track || !slides.length) return;
+
+    var index = 0, positions = 1;
+
+    var perView = function () {
+      var v = getComputedStyle(root).getPropertyValue("--per");
+      return Math.max(1, parseInt(v, 10) || 1);
+    };
+
+    var step = function () {
+      var a = slides[0].getBoundingClientRect();
+      if (slides.length > 1) {
+        var b = slides[1].getBoundingClientRect();
+        return b.left - a.left;
+      }
+      return a.width;
+    };
+
+    var render = function () {
+      track.style.transform = "translateX(" + (-index * step()) + "px)";
+      if (dotsBox) {
+        Array.prototype.forEach.call(dotsBox.children, function (d, k) {
+          d.setAttribute("aria-current", String(k === index));
+        });
+      }
+      slides.forEach(function (s, k) {
+        var visible = k >= index && k < index + perView();
+        s.setAttribute("aria-hidden", String(!visible));
+      });
+    };
+
+    var buildDots = function () {
+      positions = Math.max(1, slides.length - perView() + 1);
+      if (index > positions - 1) index = 0;
+      if (!dotsBox) return;
+      dotsBox.innerHTML = "";
+      for (var k = 0; k < positions; k++) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "carousel__dot";
+        b.setAttribute("aria-label", "Показать макет " + (k + 1));
+        (function (n) {
+          b.addEventListener("click", function () { index = n; render(); });
+        })(k);
+        dotsBox.appendChild(b);
+      }
+    };
+
+    var go = function (dir) {
+      index += dir;
+      if (index > positions - 1) index = 0;      /* после последней снова первая */
+      if (index < 0) index = positions - 1;
+      render();
+    };
+
+    if (next) next.addEventListener("click", function () { go(1); });
+    if (prev) prev.addEventListener("click", function () { go(-1); });
+
+    /* свайп пальцем */
+    var x0 = null;
+    track.addEventListener("pointerdown", function (e) { x0 = e.clientX; });
+    track.addEventListener("pointerup", function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    });
+
+    buildDots();
+    render();
+    var ct = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(ct);
+      ct = setTimeout(function () { buildDots(); render(); }, 200);
+    });
+  });
+
+
 
   /* Оптическое выравнивание заголовков.
      У букв разные боковые полуапроши: круглая «С» и прямая «П» стоят правее нуля,

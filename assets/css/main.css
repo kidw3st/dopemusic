@@ -707,6 +707,57 @@ html.js .rv.on { opacity: 1; transform: none; }
 .radio-row .rr-name { font-weight: 800; font-size: 15.5px; }
 .radio-row .rr-price { font-family: var(--font-mono); font-size: 12px; font-weight: 700; white-space: nowrap; }
 
+/* ---------- Карусель макетов ---------- */
+
+.carousel { --per: 1; }
+.carousel__viewport { overflow: hidden; }
+.carousel__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 420ms var(--ease-out);
+  will-change: transform;
+}
+.carousel__slide {
+  flex: 0 0 calc((100% - (var(--per) - 1) * 16px) / var(--per));
+  margin: 0;
+}
+.carousel__slide svg, .carousel__slide img { width: 100%; height: auto; }
+
+.carousel__bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+.carousel__btn {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  display: grid;
+  place-content: center;
+  background: var(--paper);
+  transition: background-color 140ms ease, color 140ms ease;
+}
+.carousel__btn:hover { background: var(--ink); color: var(--paper); }
+.carousel__btn svg { width: 16px; height: 16px; }
+.carousel__dots { display: flex; gap: 8px; margin-left: auto; }
+.carousel__dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  padding: 0;
+}
+.carousel__dot[aria-current="true"] { background: var(--ink); }
+
+@media (min-width: 640px) { .carousel { --per: 2; } }
+@media (min-width: 980px) { .carousel { --per: 3; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__track { transition: none; }
+}
+
 /* ---------- Аккордеон FAQ ---------- */
 
 .faq { border-top: 1px solid var(--line); }
