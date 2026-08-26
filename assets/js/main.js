@@ -150,10 +150,4 @@
     window.addEventListener("resize", function () { clearTimeout(ot); ot = setTimeout(runAll, 220); });
   }
 
-  /* Штамп сегодняшней даты в колонтитулах: 2026 18/08 */
-  var d = new Date();
-  var pad = function (n) { return n < 10 ? '0' + n : String(n); };
-  document.querySelectorAll('[data-datestamp]').forEach(function (el) {
-    el.textContent = d.getFullYear() + ' ' + pad(d.getDate()) + '/' + pad(d.getMonth() + 1);
-  });
 })();
