@@ -26,6 +26,7 @@ http.createServer((req, res) => {
     res.writeHead(400); res.end('bad request'); return;
   }
   if (urlPath.endsWith('/')) urlPath += 'index.html';
+  else if (!path.extname(urlPath)) urlPath += '/index.html'; /* адреса без .html */
   const file = path.normalize(path.join(ROOT, urlPath));
   if (!file.startsWith(ROOT)) { res.writeHead(403); res.end('forbidden'); return; }
   fs.readFile(file, (err, data) => {
