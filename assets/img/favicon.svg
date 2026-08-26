@@ -1,18 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs><clipPath id="c"><rect x="0" y="0" width="40.5" height="64"/></clipPath></defs>
-  <g clip-path="url(#c)">
-    <g transform="rotate(-10 24 32)">
-      <circle cx="24" cy="32" r="23" fill="#161513"/>
-      <g fill="#E9E7E2">
-        <g transform="rotate(-46 24 32)"><rect x="21.4" y="6.4" width="5.2" height="11" rx="2.6"/></g>
-        <g transform="rotate(-20 24 32)"><rect x="21.4" y="6.4" width="5.2" height="11" rx="2.6"/></g>
-        <g transform="rotate(6 24 32)"><rect x="21.4" y="6.4" width="5.2" height="11" rx="2.6"/></g>
-        <circle cx="24" cy="32" r="9.5"/>
-        <path d="M8.6 25.4 q0.9 3.8 5 5 q-4.1 1.2 -5 5 q-0.9 -3.8 -5 -5 q4.1 -1.2 5 -5"/>
-        <path d="M15.5 51 V42 M15.5 42 l-3 3.6 M15.5 42 l3 3.6" fill="none" stroke="#E9E7E2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-      <circle cx="24" cy="32" r="4.2" fill="#161513"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#FFFFFF"/>
+  <!-- буквы D и M взяты контурами из авторских файлов брендбука -->
+  <g fill="#161513">
+    <path transform="translate(5.51 19.63) scale(0.26287)" d="M0 92.7141V1.4145H34.4803C64.6505 1.4145 84.0457 20.1888 84.0457 47.1929C84.0457 74.0684 65.8627 92.7141 34.8843 92.7141H0ZM24.7827 70.9822H33.1334C47.6798 70.9822 57.2426 60.3092 57.2426 47.1929C57.2426 33.5622 47.5451 23.1464 35.019 23.1464H24.7827V70.9822Z"/>
+    <path transform="translate(30.10 19.63) scale(0.32944)" d="M0 73.974V1.12859H22.3284L43.0286 37.3461H43.2612L63.7289 1.12859H86.1736V73.974H64.3104V38.1669H63.9615L50.1226 60.8413H36.051L22.2121 37.9617H21.8632V73.974H0Z"/>
   </g>
-  <path fill="#161513" fill-rule="evenodd" d="M43.5 9 h7 a23 23 0 0 1 0 46 h-7 z M50 20.5 a11.5 11.5 0 0 1 0 23 z"/>
 </svg>
