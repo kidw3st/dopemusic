@@ -76,7 +76,7 @@
   --paper-on-night: #E5E3DD;
 
   /* саб-бренды: пилюли и текстовые варианты */
-  --studio: #A98BC8;
+  --studio: #8B4DC0;
   --studio-deep: #63467F;
   --label: #3D6BC6;
   --label-deep: #2C4E93;
@@ -259,7 +259,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: transparent;
   white-space: nowrap;
 }
-.pill--studio { background: var(--studio); border-color: var(--ink); }
+.pill--studio { background: var(--studio); border-color: var(--ink); color: var(--paper); }
 .pill--label  { background: #9DBEEA; border-color: var(--ink); }
 .pill--prod   { background: #EBBE6A; border-color: var(--ink); }
 .pill--ink    { background: var(--ink); color: var(--paper); }
