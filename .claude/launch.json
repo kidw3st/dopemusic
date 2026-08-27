@@ -4,8 +4,11 @@
     {
       "name": "dopemusic",
       "runtimeExecutable": "node",
-      "runtimeArgs": [".claude/serve.js"],
-      "port": 8137
+      "runtimeArgs": [
+        ".claude/serve.js"
+      ],
+      "port": 8137,
+      "autoPort": true
     }
   ]
 }
