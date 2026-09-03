@@ -1088,3 +1088,9 @@ html {
 /* строка услуги в талоне: на узком экране цена уходит под название */
 .radio-row label { flex-wrap: wrap; row-gap: 2px; }
 .radio-row .rr-price { margin-left: auto; }
+
+/* блок-опись и его заголовок смотрят друг на друга: короткая колонка centруется */
+.two-col--ledger, .two-col--mid { align-items: center; }
+@media (max-width: 860px) {
+  .two-col--ledger, .two-col--mid { align-items: start; }
+}
