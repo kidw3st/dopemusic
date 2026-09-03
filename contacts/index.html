@@ -6,7 +6,7 @@
   <title>Контакты DOPE MUSIC: Петропавловская 40, Пермь, круглосуточно</title>
   <meta name="description" content="Студия DOPE MUSIC: ул. Петропавловская, 40, Пермь. Работаем круглосуточно. Телефон 8 (919) 709-04-09, Telegram @dopemusic_perm, VK dopemusicrecords.">
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
-  <link rel="stylesheet" href="../assets/css/main.css?v=2026-09-03">
+  <link rel="stylesheet" href="../assets/css/main.css?v=2026-09-03-2">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -95,7 +95,8 @@
         </div>
 
         <figure class="rv" style="margin:0">
-          <svg viewBox="0 0 640 520" role="img" aria-label="Схема квартала: улица Петропавловская, дом 40 отмечен печатью студии" style="border:1px solid var(--line); background:var(--sheet)">
+          <div class="mapplate" id="mapPlate">
+            <svg viewBox="0 0 640 520" role="img" aria-label="Схема квартала: улица Петропавловская, дом 40 отмечен печатью студии" style="background:var(--sheet)">
             <defs>
               <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
                 <line x1="0" y1="0" x2="0" y2="7" stroke="#C2BFB7" stroke-width="1.4"/>
@@ -142,8 +143,12 @@
                 <text y="16" text-anchor="middle" font-family="Mulish, sans-serif" font-weight="700" font-size="12" font-weight="700" fill="#A33A2A">✱ 40 ✱</text>
               </g>
             </g>
-          </svg>
-          <figcaption class="mono mono-sm" style="margin-top:8px; color:#8F8C85">Схема, не масштаб: точный маршрут стройте в любых картах по адресу «Пермь, Петропавловская, 40» •</figcaption>
+            </svg>
+            <button class="mapplate__load" type="button" id="mapLoad">
+              <span class="btn">Показать карту Яндекса</span>
+            </button>
+          </div>
+          <figcaption class="mono mono-sm" id="mapNote" style="margin-top:8px; color:#8F8C85">Пока это наша схема квартала: живая карта Яндекса загрузится по клику • <a href="https://yandex.ru/maps/org/dope_music/183475169094/" rel="noopener">открыть в Яндекс.Картах</a></figcaption>
         </figure>
       </div>
     </div>
@@ -193,6 +198,6 @@
   </div>
 </footer>
 
-<script src="../assets/js/main.js?v=2026-09-03"></script>
+<script src="../assets/js/main.js?v=2026-09-03-2"></script>
 </body>
 </html>

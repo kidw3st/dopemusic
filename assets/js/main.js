@@ -236,4 +236,30 @@
     window.addEventListener("resize", function () { clearTimeout(ot); ot = setTimeout(runAll, 220); });
   }
 
+
+  /* Карта: чужой скрипт грузим только тогда, когда гость сам попросил */
+  var plate = document.getElementById('mapPlate');
+  var mapBtn = document.getElementById('mapLoad');
+  if (plate && mapBtn) {
+    mapBtn.addEventListener('click', function () {
+      var frame = document.createElement('iframe');
+      frame.src = 'https://yandex.ru/map-widget/v1/?oid=183475169094&ol=biz&z=17';
+      frame.title = 'Яндекс.Карты: Пермь, Петропавловская, 40';
+      frame.loading = 'lazy';
+      frame.allowFullscreen = true;
+      frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      var tint = document.createElement('div');
+      tint.className = 'mapplate__tint';
+      var scheme = plate.querySelector('svg');
+      if (scheme) plate.removeChild(scheme);
+      plate.removeChild(mapBtn);
+      plate.appendChild(frame);
+      plate.appendChild(tint);
+      var note = document.getElementById('mapNote');
+      if (note) {
+        note.innerHTML = 'Яндекс.Карты: Пермь, Петропавловская, 40 • <a href="https://yandex.ru/maps/org/dope_music/183475169094/" rel="noopener">открыть в приложении</a>';
+      }
+    });
+  }
+
 })();
