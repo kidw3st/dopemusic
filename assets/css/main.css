@@ -504,8 +504,10 @@ html.js .rv.on { opacity: 1; transform: none; }
 .price-list { list-style: none; margin: 0; padding: 0; }
 .price-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 12px;
+  row-gap: 2px;
   padding: 13px 0;
 }
 .price-row + .price-row { border-top: 1px solid transparent; }
@@ -518,6 +520,7 @@ html.js .rv.on { opacity: 1; transform: none; }
   transform: translateY(-4px);
 }
 .price-row__val {
+  margin-left: auto;
   font-family: var(--font-mono);
   font-size: 14px;
   font-weight: 700;
@@ -886,10 +889,7 @@ html.js .rv.on { opacity: 1; transform: none; }
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  justify-content: flex-end;
-}
-@media (max-width: 860px) {
-  .end-row { justify-content: flex-start; }
+  justify-content: center;
 }
 
 /* широкая печатная схема: на узких экранах листается в своей рамке */
@@ -1021,3 +1021,70 @@ html {
 }
 .mapplate__load:hover .btn,
 .mapplate__load:focus-visible .btn { background: transparent; color: var(--ink); }
+
+/* ---------- Выверка узких экранов ---------- */
+
+/* колонка сетки не обязана быть шире своего самого длинного слова */
+.two-col > * { min-width: 0; }
+
+/* ярлык держит ширину надписи, когда строка станции складывается в столбик */
+.station > .pill { justify-self: start; }
+
+/* ряд кнопок */
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn-row--center { justify-content: center; }
+
+/* первый экран студии, лейбла и продакшна: две кнопки держат одну строку всегда */
+.btn-row--fit { flex-wrap: nowrap; }
+@media (max-width: 560px) {
+  .btn-row--fit .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+}
+
+/* поле даты не раздувается сверх колонки: у iOS своя мерка для input[type=date] */
+.field input[type="date"] { min-width: 0; max-width: 100%; }
+@supports (-webkit-touch-callout: none) {
+  .field input[type="date"] { -webkit-appearance: none; appearance: none; }
+}
+
+/* контакты: на узком экране карта идёт первой, связь под ней */
+@media (max-width: 860px) {
+  .contacts-grid > figure { order: -1; }
+}
+
+/* точка карусели остаётся мелкой, а палец попадает по 30 пикселям */
+.carousel__dot {
+  position: relative;
+  flex: none;
+}
+.carousel__dot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+}
+.carousel__dots { align-items: center; }
+
+/* на телефоне подписи чуть крупнее, а телефон и ник в контактах легче нажать */
+@media (max-width: 640px) {
+  .mono-sm { font-size: 11.5px; }
+  .price-row a.price-row__val {
+    padding: 6px 0;
+    margin: -6px 0;
+  }
+}
+
+/* строка услуги в талоне: на узком экране цена уходит под название */
+.radio-row label { flex-wrap: wrap; row-gap: 2px; }
+.radio-row .rr-price { margin-left: auto; }
