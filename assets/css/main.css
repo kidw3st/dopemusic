@@ -431,15 +431,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .btn--paper { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 .btn--paper:hover { background: transparent; color: var(--paper); }
 
-/* телефон: моноширинные цифры, чёрным по белому */
+/* телефон: моноширинные цифры на чёрной плашке, как кнопка брони */
 .btn--phone {
-  background: #FFFFFF;
-  color: var(--ink);
-  border-color: var(--ink);
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
-.btn--phone:hover { background: var(--ink); color: #FFFFFF; }
 
 .btn--wide { justify-content: center; width: 100%; }
 
