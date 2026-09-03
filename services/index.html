@@ -42,8 +42,41 @@
 
 <main id="main">
 
+  <!-- сколько стоит час -->
+  <section class="sheet sheet--flush" aria-labelledby="hourTitle" style="padding-top:clamp(28px,4vw,52px)">
+    <div class="wrap">
+      <div class="running-head">
+        <span class="mono">Прайс студии</span>
+      </div>
+      <div class="two-col">
+        <div>
+          <h2 class="h-sec rv" id="hourTitle">Сколько стоит час</h2>
+          <p class="lead rv" style="margin-top:16px">Минимальная сессия: один час. Больше четырёх часов подряд: пятый в подарок, скажите администратору.</p>
+          <a class="btn rv" href="../booking/" style="margin-top:26px">Выбрать слот</a>
+        </div>
+        <ul class="price-list rv" style="border-top:1px solid var(--line)">
+          <li class="price-row">
+            <span class="price-row__name">Запись со звукорежиссёром</span>
+            <span class="price-row__dots" aria-hidden="true"></span>
+            <span class="price-row__val">от 1 200 ₽/час</span>
+          </li>
+          <li class="price-row" style="border-top:1px dashed var(--line)">
+            <span class="price-row__name">Самостоятельная сессия</span>
+            <span class="price-row__dots" aria-hidden="true"></span>
+            <span class="price-row__val">от 800 ₽/час</span>
+          </li>
+          <li class="price-row" style="border-top:1px dashed var(--line); border-bottom:1px solid var(--line)">
+            <span class="price-row__name">Аренда: репетиция, подкаст</span>
+            <span class="price-row__dots" aria-hidden="true"></span>
+            <span class="price-row__val">от 1 000 ₽/час</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- студия -->
-  <section class="sheet sheet--flush" aria-labelledby="sSt" style="padding-top:clamp(28px,4vw,52px)">
+  <section class="sheet" aria-labelledby="sSt" style="padding-top:clamp(26px,3.2vw,44px)">
     <div class="wrap">
       <div class="two-col two-col--ledger">
         <div>
@@ -171,38 +204,6 @@
     </div>
   </section>
 
-  <!-- сколько стоит час -->
-  <section class="sheet" aria-labelledby="hourTitle">
-    <div class="wrap">
-      <div class="running-head">
-        <span class="mono">Прайс студии</span>
-      </div>
-      <div class="two-col">
-        <div>
-          <h2 class="h-sec rv" id="hourTitle">Сколько стоит час</h2>
-          <p class="lead rv" style="margin-top:16px">Минимальная сессия: один час. Больше четырёх часов подряд: пятый в подарок, скажите администратору.</p>
-          <a class="btn rv" href="../booking/" style="margin-top:26px">Выбрать слот</a>
-        </div>
-        <ul class="price-list rv" style="border-top:1px solid var(--line)">
-          <li class="price-row">
-            <span class="price-row__name">Запись со звукорежиссёром</span>
-            <span class="price-row__dots" aria-hidden="true"></span>
-            <span class="price-row__val">от 1 200 ₽/час</span>
-          </li>
-          <li class="price-row" style="border-top:1px dashed var(--line)">
-            <span class="price-row__name">Самостоятельная сессия</span>
-            <span class="price-row__dots" aria-hidden="true"></span>
-            <span class="price-row__val">от 800 ₽/час</span>
-          </li>
-          <li class="price-row" style="border-top:1px dashed var(--line); border-bottom:1px solid var(--line)">
-            <span class="price-row__name">Аренда: репетиция, подкаст</span>
-            <span class="price-row__dots" aria-hidden="true"></span>
-            <span class="price-row__val">от 1 000 ₽/час</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
   <!-- FAQ -->
   <section class="sheet" aria-labelledby="faqTitle">
