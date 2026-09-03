@@ -704,6 +704,18 @@ html.js .rv.on { opacity: 1; transform: none; }
 .radio-row .rr-name { font-weight: 800; font-size: 15.5px; }
 .radio-row .rr-price { font-family: var(--font-mono); font-size: 12px; font-weight: 700; white-space: nowrap; }
 
+/* Сигнал бежит по тракту: пунктир соединений ползёт от узла к узлу */
+.chain-wire path {
+  animation: chain-flow 1.4s linear infinite;
+}
+@keyframes chain-flow {
+  from { stroke-dashoffset: 22; }
+  to   { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chain-wire path { animation: none; }
+}
+
 /* ---------- Карусель макетов ---------- */
 
 .carousel { --per: 1; }
