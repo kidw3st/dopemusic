@@ -130,6 +130,8 @@ body {
    Поля ввода исключены, иначе гость не видит, что именно печатает. */
 body { text-transform: uppercase; }
 input, textarea { text-transform: none; }
+/* готовое сообщение показываем ровно таким, каким оно ляжет в чат */
+#bkMsgOut { text-transform: none; }
 ::placeholder { text-transform: uppercase; }
 
 img, svg { display: block; max-width: 100%; }

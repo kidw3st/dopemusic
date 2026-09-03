@@ -8,9 +8,9 @@
 
   /* Прайс. Ставки помечены «от», источник: services.html (ASSUMPTION, правит студия) */
   var RATES = {
-    engineer: { name: 'Запись со звукорежиссёром', hour: 1200 },
-    self:     { name: 'Самостоятельная сессия', hour: 800 },
-    rent:     { name: 'Аренда студии: репетиция, подкаст', hour: 1000 }
+    engineer: { name: 'Запись со звукорежиссёром', talk: 'запись со звукорежиссёром', hour: 1200 },
+    self:     { name: 'Самостоятельная сессия', talk: 'самостоятельная сессия', hour: 800 },
+    rent:     { name: 'Аренда студии: репетиция, подкаст', talk: 'аренда студии под репетицию или подкаст', hour: 1000 }
   };
   var EXTRAS = {
     mixing:    { name: 'Сведение трека', price: 3000 },
@@ -178,20 +178,42 @@
     return ok;
   }
 
+  var MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+    'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  var WEEKDAYS = ['в воскресенье', 'в понедельник', 'во вторник', 'в среду',
+    'в четверг', 'в пятницу', 'в субботу'];
+
+  /* «сегодня», «завтра» или «в пятницу, 18 сентября» */
+  function whenPhrase(value) {
+    var p = value.split('-');
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    var diff = Math.round((d - new Date(today.getFullYear(), today.getMonth(), today.getDate())) / 86400000);
+    if (diff === 0) return 'сегодня';
+    if (diff === 1) return 'завтра';
+    return WEEKDAYS[d.getDay()] + ', ' + (+p[2]) + ' ' + MONTHS[+p[1] - 1];
+  }
+
+  function andJoin(list) {
+    if (list.length < 2) return list.join('');
+    return list.slice(0, -1).join(', ') + ' и ' + list[list.length - 1];
+  }
+
+  /* Сообщение уходит в живой чат с администратором, поэтому это письмо, а не бланк */
   function buildMessage(state) {
     var slot = form.querySelector('input[name="slot"]:checked');
-    var dd = els.date.value.split('-');
+    var contact = els.contact.value.trim();
     var lines = [
-      'Заявка с сайта DOPE MUSIC',
-      'Услуга: ' + state.rate.name,
-      'Дата: ' + dd[2] + '.' + dd[1] + '.' + dd[0] + ', начало в ' + (slot ? slot.value : '19:00'),
-      'Длительность: ' + state.hours + ' ' + hourWord(state.hours)
+      'Привет! Хочу забронировать студию, подскажите, свободно ли время.',
+      'Нужна ' + state.rate.talk + ' ' + whenPhrase(els.date.value) +
+        ', с ' + (slot ? slot.value : '19:00') +
+        ', на ' + state.hours + ' ' + hourWord(state.hours) + '.'
     ];
-    if (state.extras.length) lines.push('Дополнительно: ' + state.extras.join(', '));
-    if (state.discount) lines.push('Купон ' + PROMO.code + ': минус ' + state.discount.toLocaleString('ru-RU') + ' ₽');
-    lines.push('Расчёт по прайсу: от ' + state.total.toLocaleString('ru-RU') + ' ₽');
-    lines.push('Имя: ' + els.name.value.trim());
-    lines.push('Связь: ' + els.contact.value.trim());
+    if (state.hours >= 5) lines.push('Один час из них, как понимаю, в подарок.');
+    if (state.extras.length) lines.push('Плюс ' + andJoin(state.extras) + '.');
+    if (state.discount) lines.push('Купон ' + PROMO.code + ' учёл, минус ' + state.discount.toLocaleString('ru-RU') + ' ₽.');
+    lines.push('По прайсу выходит от ' + state.total.toLocaleString('ru-RU') + ' ₽, поправьте, если считаю не так.');
+    lines.push('Меня зовут ' + els.name.value.trim() + ', ' +
+      (contact.charAt(0) === '@' ? 'ник для связи ' + contact : 'телефон ' + contact) + '.');
     return lines.join('\n');
   }
 
@@ -208,8 +230,8 @@
       form.hidden = true;
       els.done.hidden = false;
       els.doneText.textContent = copied
-        ? 'Текст заявки скопирован. Открыли чат студии в Telegram: вставьте сообщение и отправьте. Ответ обычно в течение часа.'
-        : 'Скопируйте текст заявки ниже и отправьте его в Telegram @DOPEMUSIC_PERM. Ответ обычно в течение часа.';
+        ? 'Сообщение скопировано, чат студии открыли в Telegram: вставьте и отправьте. Обычно отвечаем в течение часа.'
+        : 'Скопируйте сообщение ниже и отправьте в Telegram @DOPEMUSIC_PERM. Обычно отвечаем в течение часа.';
       document.getElementById('bkMsgOut').textContent = msg;
       els.done.scrollIntoView({ block: 'center' });
       try { localStorage.removeItem(DRAFT_KEY); } catch (err) { }
