@@ -121,9 +121,7 @@
         hours: els.hours.value,
         name: els.name.value,
         contact: els.contact.value,
-        promo: els.promo.value,
-        mixing: form.querySelector('#bkX_mixing').checked,
-        mastering: form.querySelector('#bkX_mastering').checked
+        promo: els.promo.value
       };
       localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
     } catch (e) { /* приватный режим: пропускаем */ }
@@ -140,8 +138,6 @@
       if (data.name) els.name.value = data.name;
       if (data.contact) els.contact.value = data.contact;
       if (data.promo) els.promo.value = data.promo;
-      form.querySelector('#bkX_mixing').checked = !!data.mixing;
-      form.querySelector('#bkX_mastering').checked = !!data.mastering;
     } catch (e) { /* повреждённый черновик не мешает форме */ }
   }
   loadDraft();
